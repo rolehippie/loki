@@ -1,0 +1,75 @@
+# Standards: 1.2
+---
+- name: Create required directories
+  loop: "{{ loki_default_folders + loki_extra_folders }}"
+  file:
+    path: "{{ item }}"
+    owner: "10001"
+    group: "10001"
+    mode: u=rwx,g=rx,o=rx
+    state: directory
+  tags:
+    - loki
+
+- name: Write general config
+  notify:
+    - Restart loki
+  template:
+    src: config.j2
+    dest: /etc/loki/config.yml
+    owner: root
+    group: root
+    mode: u=rw,g=r,o=r
+  tags:
+    - loki
+
+- name: Write default config
+  notify:
+    - Restart loki
+  template:
+    src: default.j2
+    dest: /etc/default/loki
+    owner: root
+    group: root
+    mode: u=rw,g=r,o=r
+  tags:
+    - loki
+
+- name: Write service file
+  notify:
+    - Restart loki
+  template:
+    src: service.j2
+    dest: /etc/systemd/system/loki.service
+    owner: root
+    group: root
+    mode: u=rw,g=r,o=r
+  tags:
+    - loki
+
+- name: Pull docker image
+  when: loki_pull_image
+  docker_image:
+    name: "{{ loki_image }}"
+    source: pull
+  tags:
+    - loki
+
+- name: Start loki service
+  systemd:
+    name: loki
+    state: started
+    daemon_reload: True
+    masked: False
+    enabled: True
+  tags:
+    - loki
+
+- name: Include oauth2 tasks
+  when: loki_oauth2_enabled | default(False)
+  include_tasks: oauth2.yml
+  tags:
+    - loki
+    - oauth2
+
+...

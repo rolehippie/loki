@@ -1,0 +1,40 @@
+[Unit]
+Description=Loki
+
+Wants=docker.service
+After=docker.service
+
+[Service]
+Restart=always
+RestartSec=10s
+
+EnvironmentFile=/etc/environment
+ExecStop=/bin/sh -c '/usr/bin/docker ps | /bin/grep %p 1> /dev/null && /usr/bin/docker stop %p || true'
+ExecStartPre=/bin/sh -c '/usr/bin/docker ps | /bin/grep %p 1> /dev/null && /usr/bin/docker kill %p || true'
+ExecStartPre=/bin/sh -c '/usr/bin/docker ps -a | /bin/grep %p 1> /dev/null && /usr/bin/docker rm %p || true'
+ExecStart=/usr/bin/docker run --rm \
+  --name %p \
+  --hostname %p \
+  --env-file /etc/default/loki \
+{% for item in loki_oauth2_default_labels + loki_oauth2_extra_labels %}
+  --label {{ item }} \
+{% endfor %}
+{% if loki_network | default(False) %}
+  --network {{ loki_network }} \
+{% endif %}
+  --volume /etc/loki/config.yml:/etc/loki/config.yml \
+{% for item in loki_default_volumes + loki_extra_volumes %}
+  --volume {{ item }} \
+{% endfor %}
+{% for item in loki_default_publish + loki_extra_publish %}
+  --publish {{ item }} \
+{% endfor %}
+  --health-cmd 'wget -q --spider http://localhost:3100/ready' \
+  --health-interval 30s \
+  --health-retries 5 \
+  --health-timeout 10s \
+  {{ loki_image }} \
+  --config.file=/etc/loki/config.yml
+
+[Install]
+WantedBy=multi-user.target

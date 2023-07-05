@@ -1,0 +1,149 @@
+# Standards: 1.2
+---
+# @var loki_version:description: Version of the release to install
+# renovate: datasource=github-releases depName=grafana/loki
+loki_version: 2.8.2
+
+# @var loki_image:description: Docker image to use for deployment
+loki_image: "grafana/loki:{{ loki_version }}"
+
+# @var loki_pull_image:description: Pull image as part of the tasks
+loki_pull_image: True
+
+# @var loki_network:description: Optional docker network to attach
+loki_network:
+
+# @var loki_default_publish:description: List of default port publishing for docker
+# @var loki_default_publish:example: >
+# loki_default_publish:
+#   - 127.0.0.1:3100:3100
+# @end
+loki_default_publish: []
+
+# @var loki_extra_publish:description: List of extra port publishing for docker
+# @var loki_extra_publish:example: >
+# loki_extra_publish:
+#   - 127.0.0.1:3100:3100
+# @end
+loki_extra_publish: []
+
+# @var loki_default_labels:description: List of default labels to assign to docker
+loki_default_labels: []
+
+# @var loki_extra_labels:description: List of extra labels to assign to docker
+loki_extra_labels: []
+
+# @var loki_default_folders:description: List of default folders to create
+loki_default_folders:
+  - /etc/loki
+  - /var/lib/loki
+
+# @var loki_extra_folders:description: List of extra folders to create
+# @var loki_extra_folders:example: >
+# loki_extra_folders:
+#   - /path/to/host/folder1
+#   - /path/to/host/folder2
+#   - /path/to/host/folder3
+# @end
+loki_extra_folders: []
+
+# @var loki_default_volumes:description: List of default volumes to mount for docker
+loki_default_volumes:
+  - /var/lib/loki:/loki
+  - /etc/loki:/etc/loki
+
+# @var loki_extra_volumes:description: List of extra volumes to mount for docker
+# @var loki_extra_volumes:example: >
+# loki_extra_volumes:
+#   - /path/to/host/folder1:/path/within/container1
+#   - /path/to/host/folder2:/path/within/container2
+#   - /path/to/host/folder3:/path/within/container3
+# @end
+loki_extra_volumes: []
+
+# @var loki_domain:description: Domain for external access
+# @var loki_domain:example: $ "https://loki.example.com"
+loki_domain:
+
+# @var loki_retention_time:description: Retention time to define the maximum age of the data
+loki_retention_time: 30d
+
+# @var loki_oauth2_version:description: Version of the OAuth2 Proxy to download
+# renovate: datasource=github-releases depName=oauth2-proxy/oauth2-proxy
+loki_oauth2_version: 7.4.0
+
+# @var loki_image:description: Docker image to use for deployment on OAuth2 Proxy
+loki_oauth2_image: "quay.io/oauth2-proxy/oauth2-proxy:v{{ loki_oauth2_version }}"
+
+# @var loki_pull_image:description: Pull image as part of the tasks
+loki_oauth2_pull_image: True
+
+# @var loki_network:description: Optional docker network to attach on OAuth2 Proxy
+loki_oauth2_network: "{{ loki_network }}"
+
+# @var loki_oauth2_default_publish:description: List of default port publishing for docker on OAuth2 Proxy
+# @var loki_oauth2_default_publish:example: >
+# loki_oauth2_default_publish:
+#   - 127.0.0.1:3099:3099
+# @end
+loki_oauth2_default_publish: []
+
+# @var loki_oauth2_extra_publish:description: List of extra port publishing for docker on OAuth2 Proxy
+# @var loki_oauth2_extra_publish:example: >
+# loki_oauth2_extra_publish:
+#   - 127.0.0.1:3099:3099
+# @end
+loki_oauth2_extra_publish: []
+
+# @var loki_oauth2_default_labels:description: List of default labels to assign to docker on OAuth2 Proxy
+loki_oauth2_default_labels: []
+
+# @var loki_oauth2_extra_labels:description: List of extra labels to assign to docker on OAuth2 Proxy
+loki_oauth2_extra_labels: []
+
+# @var loki_oauth2_upstream:description: Upstream target for the OAuth2 proxy
+loki_oauth2_upstream: http://loki:3100
+
+# @var loki_oauth2_listen_address:description: Listem address for the OAuth2 proxy
+loki_oauth2_listen_address: 0.0.0.0:3099
+
+# @var loki_oauth2_cookie_secret:description: Cookie secret used by OAuth2 proxy
+loki_oauth2_cookie_secret:
+
+# @var loki_oauth2_provider:description: Provider for OAuth2 authentication
+loki_oauth2_provider: keycloak
+
+# @var loki_oauth2_client_id:description: Client ID for OAuth2 authentication
+loki_oauth2_client_id:
+
+# @var loki_oauth2_client_secret:description: Client secret for OAuth2 authentication
+loki_oauth2_client_secret:
+
+# @var loki_oauth2_keycloak_url:description: URL of the Keycloak realm
+loki_oauth2_keycloak_url:
+
+# @var loki_oauth2_allowed_groups:description: List of groups to allow access
+# @var loki_oauth2_allowed_groups:example: >
+# loki_oauth2_allowed_groups:
+#   - /Group1
+#   - /Group2
+#   - /Group3
+# @end
+loki_oauth2_allowed_groups: []
+
+# @var loki_oauth2_static_groups:description: List of groups assigned to static users
+loki_oauth2_static_groups: []
+
+# @var loki_oauth2_static_users:description: List of users to allow access
+# @var loki_oauth2_static_users:example: >
+# loki_oauth2_static_users:
+#   - username: username1
+#     password: p455w0rd
+#   - username: username2
+#     password: p455w0rd
+#   - username: username3
+#     password: p455w0rd
+# @end
+loki_oauth2_static_users: []
+
+...

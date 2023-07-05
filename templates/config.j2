@@ -1,0 +1,36 @@
+---
+auth_enabled: false
+
+server:
+  http_listen_port: 3100
+  grpc_server_max_recv_msg_size: {{ loki_grpc_server_max_recv_msg_size | default(4194304) }}
+  grpc_server_max_send_msg_size: {{ loki_grpc_server_max_send_msg_size | default(4194304) }}
+
+common:
+  path_prefix: /loki
+  replication_factor: 1
+
+  storage:
+    filesystem:
+      chunks_directory: /loki/chunks
+      rules_directory: /loki/rules
+
+  ring:
+    kvstore:
+      store: inmemory
+
+schema_config:
+  configs:
+    - from: 2020-10-24
+      store: boltdb-shipper
+      object_store: filesystem
+      schema: v11
+      index:
+        prefix: index_
+        period: 24h
+
+table_manager:
+  retention_deletes_enabled: {{ "true" if loki_retention_time | default(False) else "false" }}
+  retention_period: {{ loki_retention_time }}
+
+...

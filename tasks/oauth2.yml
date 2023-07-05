@@ -1,0 +1,81 @@
+# Standards: 1.2
+---
+- name: Install required packages
+  when: loki_oauth2_static_users | default(False)
+  loop:
+    - python3-passlib
+    - python3-bcrypt
+  package:
+    name: "{{ item }}"
+    state: present
+  tags:
+    - loki
+    - oauth2
+
+- name: Write users config
+  when: loki_oauth2_static_users | default(False)
+  loop: "{{ loki_oauth2_static_users }}"
+  loop_control:
+    label: "{{ item.username }}"
+  notify:
+    - Restart loki-oauth2
+  htpasswd:
+    path: /etc/loki/htpasswd
+    name: "{{ item.username }}"
+    password: "{{ item.password }}"
+    crypt_scheme: bcrypt
+    owner: root
+    group: root
+    mode: u=rw,g=r,o=r
+    state: "{{ item.state | default('present') }}"
+  tags:
+    - loki
+    - oauth2
+
+- name: Write default config
+  notify:
+    - Restart loki-oauth2
+  template:
+    src: oauth2/default.j2
+    dest: /etc/default/loki-oauth2
+    owner: root
+    group: root
+    mode: u=rw,g=r,o=r
+  tags:
+    - loki
+    - oauth2
+
+- name: Write service file
+  notify:
+    - Restart loki-oauth2
+  template:
+    src: oauth2/service.j2
+    dest: /etc/systemd/system/loki-oauth2.service
+    owner: root
+    group: root
+    mode: u=rw,g=r,o=r
+  tags:
+    - loki
+    - oauth2
+
+- name: Pull docker image
+  when: loki_oauth2_pull_image
+  docker_image:
+    name: "{{ loki_oauth2_image }}"
+    source: pull
+  tags:
+    - loki
+    - oauth2
+
+- name: Start loki-oauth2 service
+  systemd:
+    name: loki-oauth2
+    state: started
+    daemon_reload: True
+    masked: False
+    enabled: True
+  tags:
+    - loki
+    - oauth2
+
+...

@@ -1,0 +1,15 @@
+# Standards: 1.2
+---
+- name: Restart loki
+  systemd:
+    name: loki
+    state: restarted
+    daemon_reload: True
+
+- name: Restart loki-oauth2
+  systemd:
+    name: loki-oauth2
+    state: restarted
+    daemon_reload: yes
+
+...
