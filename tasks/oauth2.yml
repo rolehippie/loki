@@ -67,6 +67,15 @@
     - loki
     - oauth2
 
+- name: Create docker network
+  when:
+    - loki_oauth2_network | default(False)
+  docker_network:
+    name: '{{ loki_oauth2_network }}'
+  tags:
+    - loki
+    - oauth2
+
 - name: Start loki-oauth2 service
   systemd:
     name: loki-oauth2

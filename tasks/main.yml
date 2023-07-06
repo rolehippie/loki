@@ -48,10 +48,19 @@
     - loki
 
 - name: Pull docker image
-  when: loki_pull_image
+  when:
+    - loki_pull_image
   docker_image:
     name: "{{ loki_image }}"
     source: pull
+  tags:
+    - loki
+
+- name: Create docker network
+  when:
+    - loki_network | default(False)
+  docker_network:
+    name: '{{ loki_network }}'
   tags:
     - loki
 
