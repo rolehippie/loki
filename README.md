@@ -28,6 +28,7 @@ Building and improving this Ansible role have been sponsored by my current and p
   - [loki_extra_volumes](#loki_extra_volumes)
   - [loki_image](#loki_image)
   - [loki_network](#loki_network)
+  - [loki_oauth2_access_logging](#loki_oauth2_access_logging)
   - [loki_oauth2_allowed_groups](#loki_oauth2_allowed_groups)
   - [loki_oauth2_client_id](#loki_oauth2_client_id)
   - [loki_oauth2_client_secret](#loki_oauth2_client_secret)
@@ -42,6 +43,7 @@ Building and improving this Ansible role have been sponsored by my current and p
   - [loki_oauth2_network](#loki_oauth2_network)
   - [loki_oauth2_provider](#loki_oauth2_provider)
   - [loki_oauth2_pull_image](#loki_oauth2_pull_image)
+  - [loki_oauth2_request_logging](#loki_oauth2_request_logging)
   - [loki_oauth2_static_groups](#loki_oauth2_static_groups)
   - [loki_oauth2_static_users](#loki_oauth2_static_users)
   - [loki_oauth2_upstream](#loki_oauth2_upstream)
@@ -215,6 +217,16 @@ Optional docker network to attach on OAuth2 Proxy
 loki_network:
 ```
 
+### loki_oauth2_access_logging
+
+Enable access logging for OAuth2 proxy
+
+#### Default value
+
+```YAML
+loki_oauth2_access_logging: false
+```
+
 ### loki_oauth2_allowed_groups
 
 List of groups to allow access
@@ -370,6 +382,16 @@ loki_oauth2_provider: keycloak
 
 ```YAML
 loki_oauth2_pull_image: true
+```
+
+### loki_oauth2_request_logging
+
+Enable request logging for OAuth2 proxy
+
+#### Default value
+
+```YAML
+loki_oauth2_request_logging: false
 ```
 
 ### loki_oauth2_static_groups
