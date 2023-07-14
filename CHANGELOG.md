@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/rolehippie/loki/compare/v1.1.0...v1.2.0) (2023-07-14)
+
+
+### Features
+
+* add defaults for limits config ([03f33b1](https://github.com/rolehippie/loki/commit/03f33b103e611d304c24773cb1b4514854e70468))
+
 ## [1.1.0](https://github.com/rolehippie/loki/compare/v1.0.0...v1.1.0) (2023-07-06)
 
 
