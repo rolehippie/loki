@@ -33,4 +33,8 @@ table_manager:
   retention_deletes_enabled: {{ "true" if loki_retention_time | default(False) else "false" }}
   retention_period: {{ loki_retention_time }}
 
+limits_config:
+  max_streams_per_user: {{ loki_max_streams_per_user }}
+  max_global_streams_per_user: {{ loki_max_global_streams_per_user }}
+
 ...

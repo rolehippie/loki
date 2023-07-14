@@ -68,6 +68,12 @@ loki_domain:
 # @var loki_retention_time:description: Retention time to define the maximum age of the data
 loki_retention_time: 30d
 
+# @var loki_max_streams_per_user:description: Limits config for max streams per user
+loki_max_streams_per_user: 0
+
+# @var loki_max_global_streams_per_user:description: Limits config for max global streams per user
+loki_max_global_streams_per_user: 5000
+
 # @var loki_oauth2_version:description: Version of the OAuth2 Proxy to download
 # renovate: datasource=github-releases depName=oauth2-proxy/oauth2-proxy
 loki_oauth2_version: 7.4.0

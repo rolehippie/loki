@@ -27,6 +27,8 @@ Building and improving this Ansible role have been sponsored by my current and p
   - [loki_extra_publish](#loki_extra_publish)
   - [loki_extra_volumes](#loki_extra_volumes)
   - [loki_image](#loki_image)
+  - [loki_max_global_streams_per_user](#loki_max_global_streams_per_user)
+  - [loki_max_streams_per_user](#loki_max_streams_per_user)
   - [loki_network](#loki_network)
   - [loki_oauth2_access_logging](#loki_oauth2_access_logging)
   - [loki_oauth2_allowed_groups](#loki_oauth2_allowed_groups)
@@ -205,6 +207,26 @@ Docker image to use for deployment on OAuth2 Proxy
 
 ```YAML
 loki_image: grafana/loki:{{ loki_version }}
+```
+
+### loki_max_global_streams_per_user
+
+Limits config for max global streams per user
+
+#### Default value
+
+```YAML
+loki_max_global_streams_per_user: 5000
+```
+
+### loki_max_streams_per_user
+
+Limits config for max streams per user
+
+#### Default value
+
+```YAML
+loki_max_streams_per_user: 0
 ```
 
 ### loki_network
