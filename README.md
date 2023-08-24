@@ -2,7 +2,7 @@
 
 [![Source Code](https://img.shields.io/badge/github-source%20code-blue?logo=github&amp;logoColor=white)](https://github.com/rolehippie/loki)
 [![General Workflow](https://github.com/rolehippie/loki/actions/workflows/general.yml/badge.svg)](https://github.com/rolehippie/loki/actions/workflows/general.yml)
-[![Readme Workflow](https://github.com/rolehippie/loki/actions/workflows/readme.yml/badge.svg)](https://github.com/rolehippie/loki/actions/workflows/readme.yml)
+[![Readme Workflow](https://github.com/rolehippie/loki/actions/workflows/docs.yml/badge.svg)](https://github.com/rolehippie/loki/actions/workflows/docs.yml)
 [![Galaxy Workflow](https://github.com/rolehippie/loki/actions/workflows/galaxy.yml/badge.svg)](https://github.com/rolehippie/loki/actions/workflows/galaxy.yml)
 [![License: Apache-2.0](https://img.shields.io/github/license/rolehippie/loki)](https://github.com/rolehippie/loki/blob/master/LICENSE)
 [![Ansible Role](https://img.shields.io/badge/role-rolehippie.loki-blue)](https://galaxy.ansible.com/rolehippie/loki)
@@ -17,6 +17,7 @@ Building and improving this Ansible role have been sponsored by my current and p
 
 - [Requirements](#requirements)
 - [Default Variables](#default-variables)
+  - [loki_cpu_shares](#loki_cpu_shares)
   - [loki_default_folders](#loki_default_folders)
   - [loki_default_labels](#loki_default_labels)
   - [loki_default_publish](#loki_default_publish)
@@ -29,12 +30,17 @@ Building and improving this Ansible role have been sponsored by my current and p
   - [loki_image](#loki_image)
   - [loki_max_global_streams_per_user](#loki_max_global_streams_per_user)
   - [loki_max_streams_per_user](#loki_max_streams_per_user)
+  - [loki_memory_limit](#loki_memory_limit)
+  - [loki_memory_soft_limit](#loki_memory_soft_limit)
+  - [loki_memory_swap](#loki_memory_swap)
   - [loki_network](#loki_network)
+  - [loki_number_of_cpus](#loki_number_of_cpus)
   - [loki_oauth2_access_logging](#loki_oauth2_access_logging)
   - [loki_oauth2_allowed_groups](#loki_oauth2_allowed_groups)
   - [loki_oauth2_client_id](#loki_oauth2_client_id)
   - [loki_oauth2_client_secret](#loki_oauth2_client_secret)
   - [loki_oauth2_cookie_secret](#loki_oauth2_cookie_secret)
+  - [loki_oauth2_cpu_shares](#loki_oauth2_cpu_shares)
   - [loki_oauth2_default_labels](#loki_oauth2_default_labels)
   - [loki_oauth2_default_publish](#loki_oauth2_default_publish)
   - [loki_oauth2_extra_labels](#loki_oauth2_extra_labels)
@@ -42,7 +48,11 @@ Building and improving this Ansible role have been sponsored by my current and p
   - [loki_oauth2_image](#loki_oauth2_image)
   - [loki_oauth2_keycloak_url](#loki_oauth2_keycloak_url)
   - [loki_oauth2_listen_address](#loki_oauth2_listen_address)
+  - [loki_oauth2_memory_limit](#loki_oauth2_memory_limit)
+  - [loki_oauth2_memory_soft_limit](#loki_oauth2_memory_soft_limit)
+  - [loki_oauth2_memory_swap](#loki_oauth2_memory_swap)
   - [loki_oauth2_network](#loki_oauth2_network)
+  - [loki_oauth2_number_of_cpus](#loki_oauth2_number_of_cpus)
   - [loki_oauth2_provider](#loki_oauth2_provider)
   - [loki_oauth2_pull_image](#loki_oauth2_pull_image)
   - [loki_oauth2_request_logging](#loki_oauth2_request_logging)
@@ -66,6 +76,22 @@ Building and improving this Ansible role have been sponsored by my current and p
 
 
 ## Default Variables
+
+### loki_cpu_shares
+
+CPU shares with Docker deployment
+
+#### Default value
+
+```YAML
+loki_cpu_shares:
+```
+
+#### Example usage
+
+```YAML
+loki_cpu_shares: '512'
+```
 
 ### loki_default_folders
 
@@ -229,6 +255,54 @@ Limits config for max streams per user
 loki_max_streams_per_user: 0
 ```
 
+### loki_memory_limit
+
+Memory limit with Docker deployment
+
+#### Default value
+
+```YAML
+loki_memory_limit:
+```
+
+#### Example usage
+
+```YAML
+loki_memory_limit: 1024m
+```
+
+### loki_memory_soft_limit
+
+Soft memory limit with Docker deployment
+
+#### Default value
+
+```YAML
+loki_memory_soft_limit:
+```
+
+#### Example usage
+
+```YAML
+loki_memory_soft_limit: 512m
+```
+
+### loki_memory_swap
+
+Swap usage with Docker deployment
+
+#### Default value
+
+```YAML
+loki_memory_swap:
+```
+
+#### Example usage
+
+```YAML
+loki_memory_swap: 2048m
+```
+
 ### loki_network
 
 Optional docker network to attach on OAuth2 Proxy
@@ -237,6 +311,22 @@ Optional docker network to attach on OAuth2 Proxy
 
 ```YAML
 loki_network:
+```
+
+### loki_number_of_cpus
+
+Number of CPUs with Docker deployment
+
+#### Default value
+
+```YAML
+loki_number_of_cpus:
+```
+
+#### Example usage
+
+```YAML
+loki_number_of_cpus: '1.0'
 ```
 
 ### loki_oauth2_access_logging
@@ -296,6 +386,22 @@ Cookie secret used by OAuth2 proxy
 
 ```YAML
 loki_oauth2_cookie_secret:
+```
+
+### loki_oauth2_cpu_shares
+
+CPU shares with Docker deployment
+
+#### Default value
+
+```YAML
+loki_oauth2_cpu_shares:
+```
+
+#### Example usage
+
+```YAML
+loki_oauth2_cpu_shares: '512'
 ```
 
 ### loki_oauth2_default_labels
@@ -380,12 +486,76 @@ Listem address for the OAuth2 proxy
 loki_oauth2_listen_address: 0.0.0.0:3099
 ```
 
+### loki_oauth2_memory_limit
+
+Memory limit with Docker deployment
+
+#### Default value
+
+```YAML
+loki_oauth2_memory_limit:
+```
+
+#### Example usage
+
+```YAML
+loki_oauth2_memory_limit: 1024m
+```
+
+### loki_oauth2_memory_soft_limit
+
+Soft memory limit with Docker deployment
+
+#### Default value
+
+```YAML
+loki_oauth2_memory_soft_limit:
+```
+
+#### Example usage
+
+```YAML
+loki_oauth2_memory_soft_limit: 512m
+```
+
+### loki_oauth2_memory_swap
+
+Swap usage with Docker deployment
+
+#### Default value
+
+```YAML
+loki_oauth2_memory_swap:
+```
+
+#### Example usage
+
+```YAML
+loki_oauth2_memory_swap: 2048m
+```
+
 ### loki_oauth2_network
 
 #### Default value
 
 ```YAML
 loki_oauth2_network: '{{ loki_network }}'
+```
+
+### loki_oauth2_number_of_cpus
+
+Number of CPUs with Docker deployment
+
+#### Default value
+
+```YAML
+loki_oauth2_number_of_cpus:
+```
+
+#### Example usage
+
+```YAML
+loki_oauth2_number_of_cpus: '1.0'
 ```
 
 ### loki_oauth2_provider

@@ -61,6 +61,26 @@ loki_default_volumes:
 # @end
 loki_extra_volumes: []
 
+# @var loki_memory_limit:description: Memory limit with Docker deployment
+# @var loki_memory_limit:example: $ "1024m"
+loki_memory_limit:
+
+# @var loki_memory_swap:description: Swap usage with Docker deployment
+# @var loki_memory_swap:example: $ "2048m"
+loki_memory_swap:
+
+# @var loki_memory_soft_limit:description: Soft memory limit with Docker deployment
+# @var loki_memory_soft_limit:example: $ "512m"
+loki_memory_soft_limit:
+
+# @var loki_cpu_shares:description: CPU shares with Docker deployment
+# @var loki_cpu_shares:example: $ "512"
+loki_cpu_shares:
+
+# @var loki_number_of_cpus:description: Number of CPUs with Docker deployment
+# @var loki_number_of_cpus:example: $ "1.0"
+loki_number_of_cpus:
+
 # @var loki_domain:description: Domain for external access
 # @var loki_domain:example: $ "https://loki.example.com"
 loki_domain:
@@ -106,6 +126,26 @@ loki_oauth2_default_labels: []
 
 # @var loki_oauth2_extra_labels:description: List of extra labels to assign to docker on OAuth2 Proxy
 loki_oauth2_extra_labels: []
+
+# @var loki_oauth2_memory_limit:description: Memory limit with Docker deployment
+# @var loki_oauth2_memory_limit:example: $ "1024m"
+loki_oauth2_memory_limit:
+
+# @var loki_oauth2_memory_swap:description: Swap usage with Docker deployment
+# @var loki_oauth2_memory_swap:example: $ "2048m"
+loki_oauth2_memory_swap:
+
+# @var loki_oauth2_memory_soft_limit:description: Soft memory limit with Docker deployment
+# @var loki_oauth2_memory_soft_limit:example: $ "512m"
+loki_oauth2_memory_soft_limit:
+
+# @var loki_oauth2_cpu_shares:description: CPU shares with Docker deployment
+# @var loki_oauth2_cpu_shares:example: $ "512"
+loki_oauth2_cpu_shares:
+
+# @var loki_oauth2_number_of_cpus:description: Number of CPUs with Docker deployment
+# @var loki_oauth2_number_of_cpus:example: $ "1.0"
+loki_oauth2_number_of_cpus:
 
 # @var loki_oauth2_upstream:description: Upstream target for the OAuth2 proxy
 loki_oauth2_upstream: http://loki:3100
