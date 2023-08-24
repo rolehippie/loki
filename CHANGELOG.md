@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/rolehippie/loki/compare/v1.2.2...v1.3.0) (2023-08-24)
+
+
+### Features
+
+* add optional defaults for cpu and memory limit ([3dca09d](https://github.com/rolehippie/loki/commit/3dca09d04e53e2613a71123cd0673c9f342ad52b))
+
 ## [1.2.2](https://github.com/rolehippie/loki/compare/v1.2.1...v1.2.2) (2023-08-14)
 
 
