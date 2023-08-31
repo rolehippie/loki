@@ -20,6 +20,11 @@ storage_config:
 ruler:
   {{ loki_ruler_config | from_yaml | to_nice_yaml(indent=2) | indent(width=2) | trim }}
 {% endif %}
+{% if loki_ingester_config | default(False) %}
+
+ingester:
+  {{ loki_ingester_config | from_yaml | to_nice_yaml(indent=2) | indent(width=2) | trim }}
+{% endif %}
 {% if loki_schema_config | default(False) %}
 
 schema_config:

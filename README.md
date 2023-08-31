@@ -32,6 +32,7 @@ Building and improving this Ansible role have been sponsored by my current and p
   - [loki_grpc_server_max_recv_msg_size](#loki_grpc_server_max_recv_msg_size)
   - [loki_grpc_server_max_send_msg_size](#loki_grpc_server_max_send_msg_size)
   - [loki_image](#loki_image)
+  - [loki_ingester_config](#loki_ingester_config)
   - [loki_limits_config](#loki_limits_config)
   - [loki_max_global_streams_per_user](#loki_max_global_streams_per_user)
   - [loki_max_streams_per_user](#loki_max_streams_per_user)
@@ -288,6 +289,16 @@ Docker image to use for deployment on OAuth2 Proxy
 
 ```YAML
 loki_image: grafana/loki:{{ loki_version }}
+```
+
+### loki_ingester_config
+
+Configuration block for ingester
+
+#### Default value
+
+```YAML
+loki_ingester_config:
 ```
 
 ### loki_limits_config

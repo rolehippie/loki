@@ -131,6 +131,9 @@ loki_ruler_config: |
     local:
       directory: /loki/rules
 
+# @var loki_ingester_config:description: Configuration block for ingester
+loki_ingester_config:
+
 # @var loki_schema_config:description: Configuration block for schema_config
 loki_schema_config: |
   configs:
