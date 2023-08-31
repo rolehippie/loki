@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.4.0](https://github.com/rolehippie/loki/compare/v1.3.0...v1.4.0) (2023-08-31)
+
+
+### Features
+
+* add more options for entirely flexible config ([902a64d](https://github.com/rolehippie/loki/commit/902a64d438044d01cb2a3e3af2edaf2ce301cef5))
+* add options for the ingester config ([8b06934](https://github.com/rolehippie/loki/commit/8b069349a1431019e41539252ae3918a35ca33f5))
+
 ## [1.3.0](https://github.com/rolehippie/loki/compare/v1.2.2...v1.3.0) (2023-08-24)
 
 
