@@ -88,11 +88,69 @@ loki_domain:
 # @var loki_retention_time:description: Retention time to define the maximum age of the data
 loki_retention_time: 30d
 
+# @var loki_grpc_server_max_recv_msg_size:description: Limit on the size of a gRPC message can receive
+loki_grpc_server_max_recv_msg_size: 4194304
+
+# @var loki_grpc_server_max_send_msg_size:description: Limit on the size of a gRPC message can send
+loki_grpc_server_max_send_msg_size: 4194304
+
 # @var loki_max_streams_per_user:description: Limits config for max streams per user
 loki_max_streams_per_user: 0
 
 # @var loki_max_global_streams_per_user:description: Limits config for max global streams per user
 loki_max_global_streams_per_user: 5000
+
+# @var loki_auth_enabled:description: Enable authentication for Loki
+loki_auth_enabled: False
+
+# @var loki_server_config:description: Configuration block for server
+loki_server_config: |
+  http_listen_port: 3100
+  grpc_server_max_recv_msg_size: {{ loki_grpc_server_max_recv_msg_size }}
+  grpc_server_max_send_msg_size: {{ loki_grpc_server_max_send_msg_size }}
+
+# @var loki_common_config:description: Configuration block for common
+loki_common_config: |
+  path_prefix: /loki
+  replication_factor: 1
+
+  ring:
+    kvstore:
+      store: inmemory
+
+# @var loki_storage_config:description: Configuration block for storage_config
+loki_storage_config: |
+  filesystem:
+    directory: /loki/chunks
+
+# @var loki_ruler_config:description: Configuration block for ruler
+loki_ruler_config: |
+  storage:
+    type: local
+
+    local:
+      directory: /loki/rules
+
+# @var loki_schema_config:description: Configuration block for schema_config
+loki_schema_config: |
+  configs:
+    - from: 2020-10-24
+      store: boltdb-shipper
+      object_store: filesystem
+      schema: v11
+      index:
+        prefix: index_
+        period: 24h
+
+# @var loki_table_manager_config:description: Configuration block for table_manager
+loki_table_manager_config: |
+  retention_deletes_enabled: {{ "true" if loki_retention_time | default(False) else "false" }}
+  retention_period: {{ loki_retention_time }}
+
+# @var loki_limits_config:description: Configuration block for limits
+loki_limits_config: |
+  max_streams_per_user: {{ loki_max_streams_per_user }}
+  max_global_streams_per_user: {{ loki_max_global_streams_per_user }}
 
 # @var loki_oauth2_version:description: Version of the OAuth2 Proxy to download
 # renovate: datasource=github-releases depName=oauth2-proxy/oauth2-proxy

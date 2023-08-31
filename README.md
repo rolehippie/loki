@@ -17,6 +17,8 @@ Building and improving this Ansible role have been sponsored by my current and p
 
 - [Requirements](#requirements)
 - [Default Variables](#default-variables)
+  - [loki_auth_enabled](#loki_auth_enabled)
+  - [loki_common_config](#loki_common_config)
   - [loki_cpu_shares](#loki_cpu_shares)
   - [loki_default_folders](#loki_default_folders)
   - [loki_default_labels](#loki_default_labels)
@@ -27,7 +29,10 @@ Building and improving this Ansible role have been sponsored by my current and p
   - [loki_extra_labels](#loki_extra_labels)
   - [loki_extra_publish](#loki_extra_publish)
   - [loki_extra_volumes](#loki_extra_volumes)
+  - [loki_grpc_server_max_recv_msg_size](#loki_grpc_server_max_recv_msg_size)
+  - [loki_grpc_server_max_send_msg_size](#loki_grpc_server_max_send_msg_size)
   - [loki_image](#loki_image)
+  - [loki_limits_config](#loki_limits_config)
   - [loki_max_global_streams_per_user](#loki_max_global_streams_per_user)
   - [loki_max_streams_per_user](#loki_max_streams_per_user)
   - [loki_memory_limit](#loki_memory_limit)
@@ -62,6 +67,11 @@ Building and improving this Ansible role have been sponsored by my current and p
   - [loki_oauth2_version](#loki_oauth2_version)
   - [loki_pull_image](#loki_pull_image)
   - [loki_retention_time](#loki_retention_time)
+  - [loki_ruler_config](#loki_ruler_config)
+  - [loki_schema_config](#loki_schema_config)
+  - [loki_server_config](#loki_server_config)
+  - [loki_storage_config](#loki_storage_config)
+  - [loki_table_manager_config](#loki_table_manager_config)
   - [loki_version](#loki_version)
 - [Discovered Tags](#discovered-tags)
 - [Dependencies](#dependencies)
@@ -76,6 +86,32 @@ Building and improving this Ansible role have been sponsored by my current and p
 
 
 ## Default Variables
+
+### loki_auth_enabled
+
+Enable authentication for Loki
+
+#### Default value
+
+```YAML
+loki_auth_enabled: false
+```
+
+### loki_common_config
+
+Configuration block for common
+
+#### Default value
+
+```YAML
+loki_common_config: |
+  path_prefix: /loki
+  replication_factor: 1
+
+  ring:
+    kvstore:
+      store: inmemory
+```
 
 ### loki_cpu_shares
 
@@ -225,6 +261,26 @@ loki_extra_volumes:
   - /path/to/host/folder3:/path/within/container3
 ```
 
+### loki_grpc_server_max_recv_msg_size
+
+Limit on the size of a gRPC message can receive
+
+#### Default value
+
+```YAML
+loki_grpc_server_max_recv_msg_size: 4194304
+```
+
+### loki_grpc_server_max_send_msg_size
+
+Limit on the size of a gRPC message can send
+
+#### Default value
+
+```YAML
+loki_grpc_server_max_send_msg_size: 4194304
+```
+
 ### loki_image
 
 Docker image to use for deployment on OAuth2 Proxy
@@ -233,6 +289,18 @@ Docker image to use for deployment on OAuth2 Proxy
 
 ```YAML
 loki_image: grafana/loki:{{ loki_version }}
+```
+
+### loki_limits_config
+
+Configuration block for limits
+
+#### Default value
+
+```YAML
+loki_limits_config: |
+  max_streams_per_user: {{ loki_max_streams_per_user }}
+  max_global_streams_per_user: {{ loki_max_global_streams_per_user }}
 ```
 
 ### loki_max_global_streams_per_user
@@ -656,6 +724,76 @@ Retention time to define the maximum age of the data
 
 ```YAML
 loki_retention_time: 30d
+```
+
+### loki_ruler_config
+
+Configuration block for ruler
+
+#### Default value
+
+```YAML
+loki_ruler_config: |
+  storage:
+    type: local
+
+    local:
+      directory: /loki/rules
+```
+
+### loki_schema_config
+
+Configuration block for schema_config
+
+#### Default value
+
+```YAML
+loki_schema_config: |
+  configs:
+    - from: 2020-10-24
+      store: boltdb-shipper
+      object_store: filesystem
+      schema: v11
+      index:
+        prefix: index_
+        period: 24h
+```
+
+### loki_server_config
+
+Configuration block for server
+
+#### Default value
+
+```YAML
+loki_server_config: |
+  http_listen_port: 3100
+  grpc_server_max_recv_msg_size: {{ loki_grpc_server_max_recv_msg_size }}
+  grpc_server_max_send_msg_size: {{ loki_grpc_server_max_send_msg_size }}
+```
+
+### loki_storage_config
+
+Configuration block for storage_config
+
+#### Default value
+
+```YAML
+loki_storage_config: |
+  filesystem:
+    directory: /loki/chunks
+```
+
+### loki_table_manager_config
+
+Configuration block for table_manager
+
+#### Default value
+
+```YAML
+loki_table_manager_config: |
+  retention_deletes_enabled: {{ "true" if loki_retention_time | default(False) else "false" }}
+  retention_period: {{ loki_retention_time }}
 ```
 
 ### loki_version
