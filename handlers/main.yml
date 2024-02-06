@@ -1,12 +1,12 @@
 ---
 - name: Restart loki
-  systemd:
+  ansible.builtin.systemd:
     name: loki
     state: restarted
     daemon_reload: True
 
 - name: Restart loki-oauth2
-  systemd:
+  ansible.builtin.systemd:
     name: loki-oauth2
     state: restarted
     daemon_reload: yes
