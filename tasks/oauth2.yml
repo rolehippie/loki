@@ -1,11 +1,10 @@
-# Standards: 1.2
 ---
 - name: Install required packages
   when: loki_oauth2_static_users | default(False)
   loop:
     - python3-passlib
     - python3-bcrypt
-  package:
+  ansible.builtin.package:
     name: "{{ item }}"
     state: present
   tags:
@@ -19,7 +18,7 @@
     label: "{{ item.username }}"
   notify:
     - Restart loki-oauth2
-  htpasswd:
+  community.general.htpasswd:
     path: /etc/loki/htpasswd
     name: "{{ item.username }}"
     password: "{{ item.password }}"
@@ -35,7 +34,7 @@
 - name: Write default config
   notify:
     - Restart loki-oauth2
-  template:
+  ansible.builtin.template:
     src: oauth2/default.j2
     dest: /etc/default/loki-oauth2
     owner: root
@@ -48,7 +47,7 @@
 - name: Write service file
   notify:
     - Restart loki-oauth2
-  template:
+  ansible.builtin.template:
     src: oauth2/service.j2
     dest: /etc/systemd/system/loki-oauth2.service
     owner: root
@@ -60,7 +59,7 @@
 
 - name: Pull docker image
   when: loki_oauth2_pull_image
-  docker_image:
+  community.docker.docker_image:
     name: "{{ loki_oauth2_image }}"
     source: pull
   tags:
@@ -70,14 +69,14 @@
 - name: Create docker network
   when:
     - loki_oauth2_network | default(False)
-  docker_network:
+  community.docker.docker_network:
     name: '{{ loki_oauth2_network }}'
   tags:
     - loki
     - oauth2
 
 - name: Start loki-oauth2 service
-  systemd:
+  ansible.builtin.systemd:
     name: loki-oauth2
     state: started
     daemon_reload: True
