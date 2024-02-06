@@ -1,9 +1,0 @@
----
-collections:
-  - community.general
-  - community.docker
-
-roles:
-  - name: rolehippie.docker
-
-...
