@@ -1,5 +1,18 @@
 # Changelog
 
+## [2.0.0](https://github.com/rolehippie/loki/compare/v1.5.5...v2.0.0) (2024-02-12)
+
+
+### Features
+
+* drop support for ubuntu 18.04 ([116f42c](https://github.com/rolehippie/loki/commit/116f42cc1d724a7db4f2a92c8906b844c4ac220e))
+* used full qualified collection names ([9b2e062](https://github.com/rolehippie/loki/commit/9b2e0621ef3c14716cc152d8b7435d2bab62cb3d))
+
+
+### Bugfixes
+
+* remove meta requirements and document used collections ([2aa8b31](https://github.com/rolehippie/loki/commit/2aa8b31067883973c1ed58dd442907a76ade850b))
+
 ## [1.5.5](https://github.com/rolehippie/loki/compare/v1.5.4...v1.5.5) (2024-01-29)
 
 
