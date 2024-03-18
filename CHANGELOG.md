@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.1.0](https://github.com/rolehippie/loki/compare/v2.0.0...v2.1.0) (2024-03-18)
+
+
+### Features
+
+* **deps:** update dependency oauth2-proxy/oauth2-proxy to v7.6.0 ([857f0df](https://github.com/rolehippie/loki/commit/857f0df7734c0bd7ecd89c76b40078332cb1fed0))
+
+
+### Bugfixes
+
+* **deps:** update dependency grafana/loki to v2.9.5 ([ee88266](https://github.com/rolehippie/loki/commit/ee88266d16bd8a6f88314ec34a5ffe9eb5da36e5))
+
 ## [2.0.0](https://github.com/rolehippie/loki/compare/v1.5.5...v2.0.0) (2024-02-12)
 
 
