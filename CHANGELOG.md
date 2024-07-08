@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.1.0](https://github.com/rolehippie/loki/compare/v3.0.0...v3.1.0) (2024-07-08)
+
+
+### Features
+
+* **deps:** update dependency grafana/loki to v3.1.0 ([302df00](https://github.com/rolehippie/loki/commit/302df0081a505874f40b2c3e20c5ad1efeebcebc))
+
 ## [3.0.0](https://github.com/rolehippie/loki/compare/v2.1.1...v3.0.0) (2024-04-22)
 
 
