@@ -713,7 +713,7 @@ Version of the OAuth2 Proxy to download
 #### Default value
 
 ```YAML
-loki_oauth2_version: 7.8.1
+loki_oauth2_version: 7.8.2
 ```
 
 ### loki_pull_image
