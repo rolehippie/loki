@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.8.0](https://github.com/rolehippie/loki/compare/v3.7.0...v3.8.0) (2025-05-05)
+
+
+### Features
+
+* **deps:** update dependency oauth2-proxy/oauth2-proxy to v7.9.0 ([#48](https://github.com/rolehippie/loki/issues/48)) ([fc41acf](https://github.com/rolehippie/loki/commit/fc41acfe6d17c003209cc09e76e00e52c6ab9042))
+
 ## [3.7.0](https://github.com/rolehippie/loki/compare/v3.6.2...v3.7.0) (2025-04-28)
 
 
