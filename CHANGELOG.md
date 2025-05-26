@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.8.1](https://github.com/rolehippie/loki/compare/v3.8.0...v3.8.1) (2025-05-26)
+
+
+### Bugfixes
+
+* **deps:** update dependency grafana/loki to v3.5.1 ([#49](https://github.com/rolehippie/loki/issues/49)) ([ebe38c0](https://github.com/rolehippie/loki/commit/ebe38c06acebddc2a7c15fe4cba745c4c2e71def))
+
 ## [3.8.0](https://github.com/rolehippie/loki/compare/v3.7.0...v3.8.0) (2025-05-05)
 
 
