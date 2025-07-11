@@ -1,4 +1,4 @@
-# loki
+# workspace
 
 [![Source Code](https://img.shields.io/badge/github-source%20code-blue?logo=github&logoColor=white)](https://github.com/rolehippie/loki)
 [![General Workflow](https://github.com/rolehippie/loki/actions/workflows/general.yml/badge.svg)](https://github.com/rolehippie/loki/actions/workflows/general.yml)
@@ -813,7 +813,7 @@ Version of the release to install
 #### Default value
 
 ```YAML
-loki_version: 3.5.1
+loki_version: 3.5.2
 ```
 
 ## Discovered Tags
@@ -821,7 +821,6 @@ loki_version: 3.5.1
 **_loki_**
 
 **_oauth2_**
-
 
 ## Dependencies
 
