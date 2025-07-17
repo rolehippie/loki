@@ -156,7 +156,7 @@ loki_limits_config: |
 
 # @var loki_oauth2_version:description: Version of the OAuth2 Proxy to download
 # renovate: datasource=github-releases depName=oauth2-proxy/oauth2-proxy
-loki_oauth2_version: 7.9.0
+loki_oauth2_version: 7.10.0
 
 # @var loki_image:description: Docker image to use for deployment on OAuth2 Proxy
 loki_oauth2_image: "quay.io/oauth2-proxy/oauth2-proxy:v{{ loki_oauth2_version }}"
