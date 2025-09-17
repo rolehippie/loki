@@ -1,4 +1,4 @@
-# workspace
+# loki
 
 [![Source Code](https://img.shields.io/badge/github-source%20code-blue?logo=github&logoColor=white)](https://github.com/rolehippie/loki)
 [![General Workflow](https://github.com/rolehippie/loki/actions/workflows/general.yml/badge.svg)](https://github.com/rolehippie/loki/actions/workflows/general.yml)
@@ -17,7 +17,6 @@ Building and improving this Ansible role have been sponsored by my current and p
 
 - [Requirements](#requirements)
 - [Default Variables](#default-variables)
-  - [loki_auth_enabled](#loki_auth_enabled)
   - [loki_common_config](#loki_common_config)
   - [loki_cpu_shares](#loki_cpu_shares)
   - [loki_default_folders](#loki_default_folders)
@@ -49,6 +48,7 @@ Building and improving this Ansible role have been sponsored by my current and p
   - [loki_oauth2_cpu_shares](#loki_oauth2_cpu_shares)
   - [loki_oauth2_default_labels](#loki_oauth2_default_labels)
   - [loki_oauth2_default_publish](#loki_oauth2_default_publish)
+  - [loki_oauth2_enabled](#loki_oauth2_enabled)
   - [loki_oauth2_extra_labels](#loki_oauth2_extra_labels)
   - [loki_oauth2_extra_publish](#loki_oauth2_extra_publish)
   - [loki_oauth2_image](#loki_oauth2_image)
@@ -86,16 +86,6 @@ Building and improving this Ansible role have been sponsored by my current and p
 - Minimum Ansible version: `2.10`
 
 ## Default Variables
-
-### loki_auth_enabled
-
-Enable authentication for Loki
-
-#### Default value
-
-```YAML
-loki_auth_enabled: false
-```
 
 ### loki_common_config
 
@@ -509,6 +499,16 @@ loki_oauth2_default_publish:
   - 127.0.0.1:3099:3099
 ```
 
+### loki_oauth2_enabled
+
+Enable authentication for Loki
+
+#### Default value
+
+```YAML
+loki_oauth2_enabled: false
+```
+
 ### loki_oauth2_extra_labels
 
 List of extra labels to assign to docker on OAuth2 Proxy
@@ -802,7 +802,7 @@ Configuration block for table_manager
 
 ```YAML
 loki_table_manager_config: |
-  retention_deletes_enabled: {{ "true" if loki_retention_time | default(False) else "false" }}
+  retention_deletes_enabled: {{ "true" if loki_retention_time | length > 0 else "false" }}
   retention_period: {{ loki_retention_time }}
 ```
 

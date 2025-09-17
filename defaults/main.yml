@@ -7,7 +7,7 @@ loki_version: 3.5.4
 loki_image: "grafana/loki:{{ loki_version }}"
 
 # @var loki_pull_image:description: Pull image as part of the tasks
-loki_pull_image: True
+loki_pull_image: true
 
 # @var loki_network:description: Optional docker network to attach
 loki_network:
@@ -99,9 +99,6 @@ loki_max_streams_per_user: 0
 # @var loki_max_global_streams_per_user:description: Limits config for max global streams per user
 loki_max_global_streams_per_user: 5000
 
-# @var loki_auth_enabled:description: Enable authentication for Loki
-loki_auth_enabled: False
-
 # @var loki_server_config:description: Configuration block for server
 loki_server_config: |
   http_listen_port: 3100
@@ -146,13 +143,16 @@ loki_schema_config: |
 
 # @var loki_table_manager_config:description: Configuration block for table_manager
 loki_table_manager_config: |
-  retention_deletes_enabled: {{ "true" if loki_retention_time | default(False) else "false" }}
+  retention_deletes_enabled: {{ "true" if loki_retention_time | length > 0 else "false" }}
   retention_period: {{ loki_retention_time }}
 
 # @var loki_limits_config:description: Configuration block for limits
 loki_limits_config: |
   max_streams_per_user: {{ loki_max_streams_per_user }}
   max_global_streams_per_user: {{ loki_max_global_streams_per_user }}
+
+# @var loki_oauth2_enabled:description: Enable authentication for Loki
+loki_oauth2_enabled: false
 
 # @var loki_oauth2_version:description: Version of the OAuth2 Proxy to download
 # renovate: datasource=github-releases depName=oauth2-proxy/oauth2-proxy
@@ -162,7 +162,7 @@ loki_oauth2_version: 7.12.0
 loki_oauth2_image: "quay.io/oauth2-proxy/oauth2-proxy:v{{ loki_oauth2_version }}"
 
 # @var loki_pull_image:description: Pull image as part of the tasks
-loki_oauth2_pull_image: True
+loki_oauth2_pull_image: true
 
 # @var loki_network:description: Optional docker network to attach on OAuth2 Proxy
 loki_oauth2_network: "{{ loki_network }}"
@@ -214,10 +214,10 @@ loki_oauth2_upstream: http://loki:3100
 loki_oauth2_listen_address: 0.0.0.0:3099
 
 # @var loki_oauth2_request_logging:description: Enable request logging for OAuth2 proxy
-loki_oauth2_request_logging: False
+loki_oauth2_request_logging: false
 
 # @var loki_oauth2_access_logging:description: Enable access logging for OAuth2 proxy
-loki_oauth2_access_logging: False
+loki_oauth2_access_logging: false
 
 # @var loki_oauth2_cookie_secret:description: Cookie secret used by OAuth2 proxy
 loki_oauth2_cookie_secret:

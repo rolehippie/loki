@@ -1,6 +1,7 @@
 ---
 - name: Install required packages
-  when: loki_oauth2_static_users | default(False)
+  when:
+    - loki_oauth2_static_users | length > 0
   loop:
     - python3-passlib
     - python3-bcrypt
@@ -12,7 +13,8 @@
     - oauth2
 
 - name: Write users config
-  when: loki_oauth2_static_users | default(False)
+  when:
+    - loki_oauth2_static_users | length > 0
   loop: "{{ loki_oauth2_static_users }}"
   loop_control:
     label: "{{ item.username }}"
@@ -58,7 +60,8 @@
     - oauth2
 
 - name: Pull docker image
-  when: loki_oauth2_pull_image
+  when:
+    - loki_oauth2_pull_image
   community.docker.docker_image:
     name: "{{ loki_oauth2_image }}"
     source: pull
@@ -68,7 +71,7 @@
 
 - name: Create docker network
   when:
-    - loki_oauth2_network | default(False)
+    - false if loki_oauth2_network is none else (loki_oauth2_network | length > 0)
   community.docker.docker_network:
     name: '{{ loki_oauth2_network }}'
   tags:
@@ -79,9 +82,9 @@
   ansible.builtin.systemd:
     name: loki-oauth2
     state: started
-    daemon_reload: True
-    masked: False
-    enabled: True
+    daemon_reload: true
+    masked: false
+    enabled: true
   tags:
     - loki
     - oauth2

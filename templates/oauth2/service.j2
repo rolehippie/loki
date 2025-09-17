@@ -17,28 +17,28 @@ ExecStart=/usr/bin/docker run --rm \
   --name %p \
   --hostname %p \
   --env-file /etc/default/loki-oauth2 \
-{% if loki_oauth2_memory_limit | default(False) %}
+{% if loki_oauth2_memory_limit | default(false) %}
   --memory {{ loki_oauth2_memory_limit }} \
 {% endif %}
-{% if loki_oauth2_memory_swap | default(False) %}
+{% if loki_oauth2_memory_swap | default(false) %}
   --memory-swap {{ loki_oauth2_memory_swap }} \
 {% endif %}
-{% if loki_oauth2_memory_soft_limit | default(False) %}
+{% if loki_oauth2_memory_soft_limit | default(false) %}
   --memory-reservation {{ loki_oauth2_memory_soft_limit }} \
 {% endif %}
-{% if loki_oauth2_cpu_shares | default(False) %}
+{% if loki_oauth2_cpu_shares | default(false) %}
   --cpu-shares {{ loki_oauth2_cpu_shares }} \
 {% endif %}
-{% if loki_oauth2_number_of_cpus | default(False) %}
+{% if loki_oauth2_number_of_cpus | default(false) %}
   --cpus {{ loki_oauth2_number_of_cpus }} \
 {% endif %}
 {% for item in loki_oauth2_default_labels + loki_oauth2_extra_labels %}
   --label {{ item }} \
 {% endfor %}
-{% if loki_oauth2_network | default(False) %}
+{% if loki_oauth2_network | default(false) %}
   --network {{ loki_oauth2_network }} \
 {% endif %}
-{% if loki_oauth2_static_users | default(False) %}
+{% if loki_oauth2_static_users | default(false) %}
   --volume /etc/loki/htpasswd:/etc/loki/htpasswd \
 {% endif %}
 {% for item in loki_oauth2_default_publish + loki_oauth2_extra_publish %}

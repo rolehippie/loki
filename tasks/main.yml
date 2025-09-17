@@ -57,7 +57,7 @@
 
 - name: Create docker network
   when:
-    - loki_network | default(False)
+    - false if loki_network is none else (loki_network | length > 0)
   community.docker.docker_network:
     name: '{{ loki_network }}'
   tags:
@@ -67,14 +67,15 @@
   ansible.builtin.systemd:
     name: loki
     state: started
-    daemon_reload: True
-    masked: False
-    enabled: True
+    daemon_reload: true
+    masked: false
+    enabled: true
   tags:
     - loki
 
 - name: Include oauth2 tasks
-  when: loki_oauth2_enabled | default(False)
+  when:
+    - loki_oauth2_enabled
   ansible.builtin.include_tasks: oauth2.yml
   tags:
     - loki
