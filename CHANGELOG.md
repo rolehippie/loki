@@ -1,5 +1,18 @@
 # Changelog
 
+## [3.12.0](https://github.com/rolehippie/loki/compare/v3.11.1...v3.12.0) (2025-09-17)
+
+
+### Features
+
+* apply new repo structure and update linting ([6d6b06a](https://github.com/rolehippie/loki/commit/6d6b06a3d934b9d790eb19bd15a670a6a34f8124))
+
+
+### Bugfixes
+
+* define requirements only once ([ae5ed91](https://github.com/rolehippie/loki/commit/ae5ed91ccd0b5aa4d921341f21d26943e3859db9))
+* **deps:** update dependency grafana/loki to v3.5.5 ([#58](https://github.com/rolehippie/loki/issues/58)) ([15fd88e](https://github.com/rolehippie/loki/commit/15fd88e940bfe453ac02b08fb5e221c8ecc09a8a))
+
 ## [3.11.1](https://github.com/rolehippie/loki/compare/v3.11.0...v3.11.1) (2025-09-08)
 
 
