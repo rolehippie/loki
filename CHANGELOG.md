@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.12.1](https://github.com/rolehippie/loki/compare/v3.12.0...v3.12.1) (2025-09-22)
+
+
+### Bugfixes
+
+* add noble to supported versions ([4abdaf3](https://github.com/rolehippie/loki/commit/4abdaf353c144d4f557a662932136efe37a7fdbf))
+
 ## [3.12.0](https://github.com/rolehippie/loki/compare/v3.11.1...v3.12.0) (2025-09-17)
 
 
