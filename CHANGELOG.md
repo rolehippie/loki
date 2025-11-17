@@ -1,5 +1,19 @@
 # Changelog
 
+## [4.0.0](https://github.com/rolehippie/loki/compare/v3.12.3...v4.0.0) (2025-11-17)
+
+
+### Features
+
+* **major:** update dependency community.docker to v5 ([#68](https://github.com/rolehippie/loki/issues/68)) ([1a42b43](https://github.com/rolehippie/loki/commit/1a42b43a880ac4d0656f75b08c28c0d45ad5d280))
+* **major:** update dependency community.general to v12 ([#69](https://github.com/rolehippie/loki/issues/69)) ([1671cde](https://github.com/rolehippie/loki/commit/1671cdebcdb399f0517e88c16a380df0d609d3ce))
+* **minor:** update dependency oauth2-proxy/oauth2-proxy to v7.13.0 ([#71](https://github.com/rolehippie/loki/issues/71)) ([96b8cfe](https://github.com/rolehippie/loki/commit/96b8cfed0c3a7e49f1a21caafad629a59ce92846))
+
+
+### Bugfixes
+
+* **patch:** update dependency grafana/loki to v3.5.8 ([#70](https://github.com/rolehippie/loki/issues/70)) ([1078cde](https://github.com/rolehippie/loki/commit/1078cde9b83f4662dd0f7e781b59f7187c5671d5))
+
 ## [3.12.3](https://github.com/rolehippie/loki/compare/v3.12.2...v3.12.3) (2025-10-20)
 
 
