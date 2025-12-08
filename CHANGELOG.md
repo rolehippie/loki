@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.2.0](https://github.com/rolehippie/loki/compare/v4.1.1...v4.2.0) (2025-12-08)
+
+
+### Features
+
+* **minor:** update dependency community.general to >=12.1.0,<12.2.0 ([#82](https://github.com/rolehippie/loki/issues/82)) ([3bb6e81](https://github.com/rolehippie/loki/commit/3bb6e8192050c4c66c64e8b1f67bec746b5b73cb))
+
 ## [4.1.1](https://github.com/rolehippie/loki/compare/v4.1.0...v4.1.1) (2025-12-01)
 
 
