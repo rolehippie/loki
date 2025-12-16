@@ -84,6 +84,9 @@ loki_number_of_cpus:
 # @var loki_domain:example: $ "https://loki.example.com"
 loki_domain:
 
+# @var loki_auth_enabled:description: Enable authentication for Loki
+loki_auth_enabled: false
+
 # @var loki_retention_time:description: Retention time to define the maximum age of the data
 loki_retention_time: 30d
 
@@ -105,6 +108,77 @@ loki_server_config: |
   grpc_server_max_recv_msg_size: {{ loki_grpc_server_max_recv_msg_size }}
   grpc_server_max_send_msg_size: {{ loki_grpc_server_max_send_msg_size }}
 
+# @var loki_ui_config:description: Configuration block for ui
+loki_ui_config:
+
+# @var loki_distributor_config:description: Configuration block for distributor
+loki_distributor_config:
+
+# @var loki_querier_config:description: Configuration block for querier
+loki_querier_config:
+
+# @var loki_query_scheduler_config:description: Configuration block for query_scheduler
+loki_query_scheduler_config:
+
+# @var loki_ruler_config:description: Configuration block for ruler
+loki_ruler_config:
+
+# @var loki_ruler_storage_config:description: Configuration block for ruler_storage
+loki_ruler_storage_config: |
+  backend: local
+  local:
+    directory: /loki/rules
+
+# @var loki_ingester_client_config:description: Configuration block for ingester_client
+loki_ingester_client_config:
+
+# @var loki_ingester_config:description: Configuration block for ingester
+loki_ingester_config:
+
+# @var loki_pattern_ingester_config:description: Configuration block for pattern_ingester
+loki_pattern_ingester_config:
+
+# @var loki_index_gateway_config:description: Configuration block for index_gateway
+loki_index_gateway_config:
+
+# @var loki_storage_config:description: Configuration block for storage_config
+loki_storage_config: |
+  filesystem:
+    directory: /loki/chunks
+
+# @var loki_chunk_store_config:description: Configuration block for chunk_store_config
+loki_chunk_store_config:
+
+# @var loki_schema_config:description: Configuration block for schema_config
+loki_schema_config: |
+  configs:
+    - from: 2020-10-24
+      store: boltdb-shipper
+      object_store: filesystem
+      schema: v13
+      index:
+        prefix: index_
+        period: 24h
+
+# @var loki_compactor_config:description: Configuration block for compactor
+loki_compactor_config:
+
+# @var loki_limits_config:description: Configuration block for limits
+loki_limits_config: |
+  max_streams_per_user: {{ loki_max_streams_per_user }}
+  max_global_streams_per_user: {{ loki_max_global_streams_per_user }}
+
+# @var loki_frontend_worker_config:description: Configuration block for frontend_worker
+loki_frontend_worker_config:
+
+# @var loki_table_manager_config:description: Configuration block for table_manager
+loki_table_manager_config: |
+  retention_deletes_enabled: {{ "true" if loki_retention_time | length > 0 else "false" }}
+  retention_period: {{ loki_retention_time }}
+
+# @var loki_memberlist_config:description: Configuration block for memberlist
+loki_memberlist_config:
+
 # @var loki_common_config:description: Configuration block for common
 loki_common_config: |
   path_prefix: /loki
@@ -114,42 +188,116 @@ loki_common_config: |
     kvstore:
       store: inmemory
 
-# @var loki_storage_config:description: Configuration block for storage_config
-loki_storage_config: |
-  filesystem:
-    directory: /loki/chunks
+# @var loki_additional_config:description: Additional optional config to append
+loki_additional_config:
 
-# @var loki_ruler_config:description: Configuration block for ruler
-loki_ruler_config: |
-  storage:
-    type: local
+# @var loki_combined_config:description: Final combined config writte to file
+loki_combined_config: |
+  auth_enabled: {{ loki_auth_enabled | lower }}
+  {% if loki_server_config | length > 0 %}
 
-    local:
-      directory: /loki/rules
+  server:
+    {{ loki_server_config | from_yaml | to_nice_yaml(indent=2) | indent(width=2) | trim }}
+  {% endif %}
+  {% if loki_ui_config | length > 0 %}
 
-# @var loki_ingester_config:description: Configuration block for ingester
-loki_ingester_config:
+  ui:
+    {{ loki_ui_config | from_yaml | to_nice_yaml(indent=2) | indent(width=2) | trim }}
+  {% endif %}
+  {% if loki_distributor_config | length > 0 %}
 
-# @var loki_schema_config:description: Configuration block for schema_config
-loki_schema_config: |
-  configs:
-    - from: 2020-10-24
-      store: boltdb-shipper
-      object_store: filesystem
-      schema: v11
-      index:
-        prefix: index_
-        period: 24h
+  distributor:
+    {{ loki_distributor_config | from_yaml | to_nice_yaml(indent=2) | indent(width=2) | trim }}
+  {% endif %}
+  {% if loki_querier_config | length > 0 %}
 
-# @var loki_table_manager_config:description: Configuration block for table_manager
-loki_table_manager_config: |
-  retention_deletes_enabled: {{ "true" if loki_retention_time | length > 0 else "false" }}
-  retention_period: {{ loki_retention_time }}
+  querier:
+    {{ loki_querier_config | from_yaml | to_nice_yaml(indent=2) | indent(width=2) | trim }}
+  {% endif %}
+  {% if loki_query_scheduler_config | length > 0 %}
 
-# @var loki_limits_config:description: Configuration block for limits
-loki_limits_config: |
-  max_streams_per_user: {{ loki_max_streams_per_user }}
-  max_global_streams_per_user: {{ loki_max_global_streams_per_user }}
+  query_scheduler:
+    {{ loki_query_scheduler_config | from_yaml | to_nice_yaml(indent=2) | indent(width=2) | trim }}
+  {% endif %}
+  {% if loki_ruler_config | length > 0 %}
+
+  ruler:
+    {{ loki_ruler_config | from_yaml | to_nice_yaml(indent=2) | indent(width=2) | trim }}
+  {% endif %}
+  {% if loki_ruler_storage_config | length > 0 %}
+
+  ruler_storage:
+    {{ loki_ruler_storage_config | from_yaml | to_nice_yaml(indent=2) | indent(width=2) | trim }}
+  {% endif %}
+  {% if loki_ingester_client_config | length > 0 %}
+
+  ingester_client:
+    {{ loki_ingester_client_config | from_yaml | to_nice_yaml(indent=2) | indent(width=2) | trim }}
+  {% endif %}
+  {% if loki_ingester_config | length > 0 %}
+
+  ingester:
+    {{ loki_ingester_config | from_yaml | to_nice_yaml(indent=2) | indent(width=2) | trim }}
+  {% endif %}
+  {% if loki_pattern_ingester_config | length > 0 %}
+
+  pattern_ingester:
+    {{ loki_pattern_ingester_config | from_yaml | to_nice_yaml(indent=2) | indent(width=2) | trim }}
+  {% endif %}
+  {% if loki_index_gateway_config | length > 0 %}
+
+  index_gateway:
+    {{ loki_index_gateway_config | from_yaml | to_nice_yaml(indent=2) | indent(width=2) | trim }}
+  {% endif %}
+  {% if loki_storage_config | length > 0 %}
+
+  storage_config:
+    {{ loki_storage_config | from_yaml | to_nice_yaml(indent=2) | indent(width=2) | trim }}
+  {% endif %}
+  {% if loki_chunk_store_config | length > 0 %}
+
+  chunk_store_config:
+    {{ loki_chunk_store_config | from_yaml | to_nice_yaml(indent=2) | indent(width=2) | trim }}
+  {% endif %}
+  {% if loki_schema_config | length > 0 %}
+
+  schema_config:
+    {{ loki_schema_config | from_yaml | to_nice_yaml(indent=2) | indent(width=2) | trim }}
+  {% endif %}
+  {% if loki_compactor_config | length > 0 %}
+
+  compactor_config:
+    {{ loki_compactor_config | from_yaml | to_nice_yaml(indent=2) | indent(width=2) | trim }}
+  {% endif %}
+  {% if loki_limits_config | length > 0 %}
+
+  limits_config:
+    {{ loki_limits_config | from_yaml | to_nice_yaml(indent=2) | indent(width=2) | trim }}
+  {% endif %}
+  {% if loki_frontend_worker_config | length > 0 %}
+
+  frontend_worker_config:
+    {{ loki_frontend_worker_config | from_yaml | to_nice_yaml(indent=2) | indent(width=2) | trim }}
+  {% endif %}
+  {% if loki_table_manager_config | length > 0 %}
+
+  table_manager:
+    {{ loki_table_manager_config | from_yaml | to_nice_yaml(indent=2) | indent(width=2) | trim }}
+  {% endif %}
+  {% if loki_memberlist_config | length > 0 %}
+
+  memberlist:
+    {{ loki_memberlist_config | from_yaml | to_nice_yaml(indent=2) | indent(width=2) | trim }}
+  {% endif %}
+  {% if loki_common_config | length > 0 %}
+
+  common:
+    {{ loki_common_config | from_yaml | to_nice_yaml(indent=2) | indent(width=2) | trim }}
+  {% endif %}
+  {% if loki_additional_config | length > 0 %}
+
+  {{ loki_additional_config | from_yaml | to_nice_yaml(indent=2) | trim }}
+  {% endif %}
 
 # @var loki_oauth2_enabled:description: Enable authentication for Loki
 loki_oauth2_enabled: false

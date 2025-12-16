@@ -13,8 +13,8 @@
 - name: Write general config
   notify:
     - Restart loki
-  ansible.builtin.template:
-    src: config.j2
+  ansible.builtin.copy:
+    content: "{{ loki_combined_config }}"
     dest: /etc/loki/config.yml
     owner: root
     group: root
@@ -57,7 +57,7 @@
 
 - name: Create docker network
   when:
-    - false if loki_network is none else (loki_network | length > 0)
+    - false if loki_network is none else true
   community.docker.docker_network:
     name: '{{ loki_network }}'
   tags:
