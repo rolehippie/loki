@@ -71,7 +71,7 @@
 
 - name: Create docker network
   when:
-    - false if loki_oauth2_network is none else (loki_oauth2_network | length > 0)
+    - false if loki_oauth2_network is none else false
   community.docker.docker_network:
     name: '{{ loki_oauth2_network }}'
   tags:

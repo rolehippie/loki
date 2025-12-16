@@ -17,24 +17,34 @@ Building and improving this Ansible role have been sponsored by my current and p
 
 - [Requirements](#requirements)
 - [Default Variables](#default-variables)
+  - [loki_additional_config](#loki_additional_config)
+  - [loki_auth_enabled](#loki_auth_enabled)
+  - [loki_chunk_store_config](#loki_chunk_store_config)
+  - [loki_combined_config](#loki_combined_config)
   - [loki_common_config](#loki_common_config)
+  - [loki_compactor_config](#loki_compactor_config)
   - [loki_cpu_shares](#loki_cpu_shares)
   - [loki_default_folders](#loki_default_folders)
   - [loki_default_labels](#loki_default_labels)
   - [loki_default_publish](#loki_default_publish)
   - [loki_default_volumes](#loki_default_volumes)
+  - [loki_distributor_config](#loki_distributor_config)
   - [loki_domain](#loki_domain)
   - [loki_extra_folders](#loki_extra_folders)
   - [loki_extra_labels](#loki_extra_labels)
   - [loki_extra_publish](#loki_extra_publish)
   - [loki_extra_volumes](#loki_extra_volumes)
+  - [loki_frontend_worker_config](#loki_frontend_worker_config)
   - [loki_grpc_server_max_recv_msg_size](#loki_grpc_server_max_recv_msg_size)
   - [loki_grpc_server_max_send_msg_size](#loki_grpc_server_max_send_msg_size)
   - [loki_image](#loki_image)
+  - [loki_index_gateway_config](#loki_index_gateway_config)
+  - [loki_ingester_client_config](#loki_ingester_client_config)
   - [loki_ingester_config](#loki_ingester_config)
   - [loki_limits_config](#loki_limits_config)
   - [loki_max_global_streams_per_user](#loki_max_global_streams_per_user)
   - [loki_max_streams_per_user](#loki_max_streams_per_user)
+  - [loki_memberlist_config](#loki_memberlist_config)
   - [loki_memory_limit](#loki_memory_limit)
   - [loki_memory_soft_limit](#loki_memory_soft_limit)
   - [loki_memory_swap](#loki_memory_swap)
@@ -66,13 +76,18 @@ Building and improving this Ansible role have been sponsored by my current and p
   - [loki_oauth2_static_users](#loki_oauth2_static_users)
   - [loki_oauth2_upstream](#loki_oauth2_upstream)
   - [loki_oauth2_version](#loki_oauth2_version)
+  - [loki_pattern_ingester_config](#loki_pattern_ingester_config)
   - [loki_pull_image](#loki_pull_image)
+  - [loki_querier_config](#loki_querier_config)
+  - [loki_query_scheduler_config](#loki_query_scheduler_config)
   - [loki_retention_time](#loki_retention_time)
   - [loki_ruler_config](#loki_ruler_config)
+  - [loki_ruler_storage_config](#loki_ruler_storage_config)
   - [loki_schema_config](#loki_schema_config)
   - [loki_server_config](#loki_server_config)
   - [loki_storage_config](#loki_storage_config)
   - [loki_table_manager_config](#loki_table_manager_config)
+  - [loki_ui_config](#loki_ui_config)
   - [loki_version](#loki_version)
 - [Discovered Tags](#discovered-tags)
 - [Dependencies](#dependencies)
@@ -86,6 +101,151 @@ Building and improving this Ansible role have been sponsored by my current and p
 - Minimum Ansible version: `2.10`
 
 ## Default Variables
+
+### loki_additional_config
+
+Additional optional config to append
+
+#### Default value
+
+```YAML
+loki_additional_config:
+```
+
+### loki_auth_enabled
+
+Enable authentication for Loki
+
+#### Default value
+
+```YAML
+loki_auth_enabled: false
+```
+
+### loki_chunk_store_config
+
+Configuration block for chunk_store_config
+
+#### Default value
+
+```YAML
+loki_chunk_store_config:
+```
+
+### loki_combined_config
+
+Final combined config writte to file
+
+#### Default value
+
+```YAML
+loki_combined_config: |
+  auth_enabled: {{ loki_auth_enabled | lower }}
+  {% if loki_server_config | length > 0 %}
+
+  server:
+    {{ loki_server_config | from_yaml | to_nice_yaml(indent=2) | indent(width=2) | trim }}
+  {% endif %}
+  {% if loki_ui_config | length > 0 %}
+
+  ui:
+    {{ loki_ui_config | from_yaml | to_nice_yaml(indent=2) | indent(width=2) | trim }}
+  {% endif %}
+  {% if loki_distributor_config | length > 0 %}
+
+  distributor:
+    {{ loki_distributor_config | from_yaml | to_nice_yaml(indent=2) | indent(width=2) | trim }}
+  {% endif %}
+  {% if loki_querier_config | length > 0 %}
+
+  querier:
+    {{ loki_querier_config | from_yaml | to_nice_yaml(indent=2) | indent(width=2) | trim }}
+  {% endif %}
+  {% if loki_query_scheduler_config | length > 0 %}
+
+  query_scheduler:
+    {{ loki_query_scheduler_config | from_yaml | to_nice_yaml(indent=2) | indent(width=2) | trim }}
+  {% endif %}
+  {% if loki_ruler_config | length > 0 %}
+
+  ruler:
+    {{ loki_ruler_config | from_yaml | to_nice_yaml(indent=2) | indent(width=2) | trim }}
+  {% endif %}
+  {% if loki_ruler_storage_config | length > 0 %}
+
+  ruler_storage:
+    {{ loki_ruler_storage_config | from_yaml | to_nice_yaml(indent=2) | indent(width=2) | trim }}
+  {% endif %}
+  {% if loki_ingester_client_config | length > 0 %}
+
+  ingester_client:
+    {{ loki_ingester_client_config | from_yaml | to_nice_yaml(indent=2) | indent(width=2) | trim }}
+  {% endif %}
+  {% if loki_ingester_config | length > 0 %}
+
+  ingester:
+    {{ loki_ingester_config | from_yaml | to_nice_yaml(indent=2) | indent(width=2) | trim }}
+  {% endif %}
+  {% if loki_pattern_ingester_config | length > 0 %}
+
+  pattern_ingester:
+    {{ loki_pattern_ingester_config | from_yaml | to_nice_yaml(indent=2) | indent(width=2) | trim }}
+  {% endif %}
+  {% if loki_index_gateway_config | length > 0 %}
+
+  index_gateway:
+    {{ loki_index_gateway_config | from_yaml | to_nice_yaml(indent=2) | indent(width=2) | trim }}
+  {% endif %}
+  {% if loki_storage_config | length > 0 %}
+
+  storage_config:
+    {{ loki_storage_config | from_yaml | to_nice_yaml(indent=2) | indent(width=2) | trim }}
+  {% endif %}
+  {% if loki_chunk_store_config | length > 0 %}
+
+  chunk_store_config:
+    {{ loki_chunk_store_config | from_yaml | to_nice_yaml(indent=2) | indent(width=2) | trim }}
+  {% endif %}
+  {% if loki_schema_config | length > 0 %}
+
+  schema_config:
+    {{ loki_schema_config | from_yaml | to_nice_yaml(indent=2) | indent(width=2) | trim }}
+  {% endif %}
+  {% if loki_compactor_config | length > 0 %}
+
+  compactor_config:
+    {{ loki_compactor_config | from_yaml | to_nice_yaml(indent=2) | indent(width=2) | trim }}
+  {% endif %}
+  {% if loki_limits_config | length > 0 %}
+
+  limits_config:
+    {{ loki_limits_config | from_yaml | to_nice_yaml(indent=2) | indent(width=2) | trim }}
+  {% endif %}
+  {% if loki_frontend_worker_config | length > 0 %}
+
+  frontend_worker_config:
+    {{ loki_frontend_worker_config | from_yaml | to_nice_yaml(indent=2) | indent(width=2) | trim }}
+  {% endif %}
+  {% if loki_table_manager_config | length > 0 %}
+
+  table_manager:
+    {{ loki_table_manager_config | from_yaml | to_nice_yaml(indent=2) | indent(width=2) | trim }}
+  {% endif %}
+  {% if loki_memberlist_config | length > 0 %}
+
+  memberlist:
+    {{ loki_memberlist_config | from_yaml | to_nice_yaml(indent=2) | indent(width=2) | trim }}
+  {% endif %}
+  {% if loki_common_config | length > 0 %}
+
+  common:
+    {{ loki_common_config | from_yaml | to_nice_yaml(indent=2) | indent(width=2) | trim }}
+  {% endif %}
+  {% if loki_additional_config | length > 0 %}
+
+  {{ loki_additional_config | from_yaml | to_nice_yaml(indent=2) | trim }}
+  {% endif %}
+```
 
 ### loki_common_config
 
@@ -101,6 +261,16 @@ loki_common_config: |
   ring:
     kvstore:
       store: inmemory
+```
+
+### loki_compactor_config
+
+Configuration block for compactor
+
+#### Default value
+
+```YAML
+loki_compactor_config:
 ```
 
 ### loki_cpu_shares
@@ -168,6 +338,16 @@ List of default volumes to mount for docker
 loki_default_volumes:
   - /var/lib/loki:/loki
   - /etc/loki:/etc/loki
+```
+
+### loki_distributor_config
+
+Configuration block for distributor
+
+#### Default value
+
+```YAML
+loki_distributor_config:
 ```
 
 ### loki_domain
@@ -251,6 +431,16 @@ loki_extra_volumes:
   - /path/to/host/folder3:/path/within/container3
 ```
 
+### loki_frontend_worker_config
+
+Configuration block for frontend_worker
+
+#### Default value
+
+```YAML
+loki_frontend_worker_config:
+```
+
 ### loki_grpc_server_max_recv_msg_size
 
 Limit on the size of a gRPC message can receive
@@ -279,6 +469,26 @@ Docker image to use for deployment on OAuth2 Proxy
 
 ```YAML
 loki_image: grafana/loki:{{ loki_version }}
+```
+
+### loki_index_gateway_config
+
+Configuration block for index_gateway
+
+#### Default value
+
+```YAML
+loki_index_gateway_config:
+```
+
+### loki_ingester_client_config
+
+Configuration block for ingester_client
+
+#### Default value
+
+```YAML
+loki_ingester_client_config:
 ```
 
 ### loki_ingester_config
@@ -321,6 +531,16 @@ Limits config for max streams per user
 
 ```YAML
 loki_max_streams_per_user: 0
+```
+
+### loki_memberlist_config
+
+Configuration block for memberlist
+
+#### Default value
+
+```YAML
+loki_memberlist_config:
 ```
 
 ### loki_memory_limit
@@ -716,6 +936,16 @@ Version of the OAuth2 Proxy to download
 loki_oauth2_version: 7.13.0
 ```
 
+### loki_pattern_ingester_config
+
+Configuration block for pattern_ingester
+
+#### Default value
+
+```YAML
+loki_pattern_ingester_config:
+```
+
 ### loki_pull_image
 
 Pull image as part of the tasks
@@ -724,6 +954,26 @@ Pull image as part of the tasks
 
 ```YAML
 loki_pull_image: true
+```
+
+### loki_querier_config
+
+Configuration block for querier
+
+#### Default value
+
+```YAML
+loki_querier_config:
+```
+
+### loki_query_scheduler_config
+
+Configuration block for query_scheduler
+
+#### Default value
+
+```YAML
+loki_query_scheduler_config:
 ```
 
 ### loki_retention_time
@@ -743,12 +993,20 @@ Configuration block for ruler
 #### Default value
 
 ```YAML
-loki_ruler_config: |
-  storage:
-    type: local
+loki_ruler_config:
+```
 
-    local:
-      directory: /loki/rules
+### loki_ruler_storage_config
+
+Configuration block for ruler_storage
+
+#### Default value
+
+```YAML
+loki_ruler_storage_config: |
+  backend: local
+  local:
+    directory: /loki/rules
 ```
 
 ### loki_schema_config
@@ -763,7 +1021,7 @@ loki_schema_config: |
     - from: 2020-10-24
       store: boltdb-shipper
       object_store: filesystem
-      schema: v11
+      schema: v13
       index:
         prefix: index_
         period: 24h
@@ -804,6 +1062,16 @@ Configuration block for table_manager
 loki_table_manager_config: |
   retention_deletes_enabled: {{ "true" if loki_retention_time | length > 0 else "false" }}
   retention_period: {{ loki_retention_time }}
+```
+
+### loki_ui_config
+
+Configuration block for ui
+
+#### Default value
+
+```YAML
+loki_ui_config:
 ```
 
 ### loki_version
