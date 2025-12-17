@@ -44,10 +44,6 @@ ExecStart=/usr/bin/docker run --rm \
 {% for item in loki_default_publish + loki_extra_publish %}
   --publish {{ item }} \
 {% endfor %}
-  --health-cmd 'wget -q --spider http://localhost:3100/ready' \
-  --health-interval 30s \
-  --health-retries 5 \
-  --health-timeout 10s \
   {{ loki_image }} \
   --config.file=/etc/loki/config.yml
 
