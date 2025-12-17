@@ -1,5 +1,23 @@
 # Changelog
 
+## [5.0.0](https://github.com/rolehippie/loki/compare/v4.2.1...v5.0.0) (2025-12-17)
+
+
+### ⚠ BREAKING CHANGES
+
+* replace boltdb shipper by tsdb
+* restructure config and make it full customizable
+
+### Features
+
+* replace boltdb shipper by tsdb ([9432d98](https://github.com/rolehippie/loki/commit/9432d98e4f222cca2dbe7242f6ba188ccb231eac))
+* restructure config and make it full customizable ([bd0f97b](https://github.com/rolehippie/loki/commit/bd0f97b67e23ce6acc900439963a8abda560c365))
+
+
+### Bugfixes
+
+* drop healthcheck, no wget on loki image available ([462b047](https://github.com/rolehippie/loki/commit/462b0478724c5ef368face72b6080dbf45d56684))
+
 ## [4.2.1](https://github.com/rolehippie/loki/compare/v4.2.0...v4.2.1) (2025-12-15)
 
 
