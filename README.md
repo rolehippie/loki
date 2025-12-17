@@ -141,107 +141,107 @@ Final combined config writte to file
 ```YAML
 loki_combined_config: |
   auth_enabled: {{ loki_auth_enabled | lower }}
-  {% if loki_server_config | length > 0 %}
+  {% if loki_server_config is not none and loki_server_config | length > 0 %}
 
   server:
     {{ loki_server_config | from_yaml | to_nice_yaml(indent=2) | indent(width=2) | trim }}
   {% endif %}
-  {% if loki_ui_config | length > 0 %}
+  {% if loki_ui_config is not none and loki_ui_config | length > 0 %}
 
   ui:
     {{ loki_ui_config | from_yaml | to_nice_yaml(indent=2) | indent(width=2) | trim }}
   {% endif %}
-  {% if loki_distributor_config | length > 0 %}
+  {% if loki_distributor_config is not none and loki_distributor_config | length > 0 %}
 
   distributor:
     {{ loki_distributor_config | from_yaml | to_nice_yaml(indent=2) | indent(width=2) | trim }}
   {% endif %}
-  {% if loki_querier_config | length > 0 %}
+  {% if loki_querier_config is not none and loki_querier_config | length > 0 %}
 
   querier:
     {{ loki_querier_config | from_yaml | to_nice_yaml(indent=2) | indent(width=2) | trim }}
   {% endif %}
-  {% if loki_query_scheduler_config | length > 0 %}
+  {% if loki_query_scheduler_config is not none and loki_query_scheduler_config | length > 0 %}
 
   query_scheduler:
     {{ loki_query_scheduler_config | from_yaml | to_nice_yaml(indent=2) | indent(width=2) | trim }}
   {% endif %}
-  {% if loki_ruler_config | length > 0 %}
+  {% if loki_ruler_config is not none and loki_ruler_config | length > 0 %}
 
   ruler:
     {{ loki_ruler_config | from_yaml | to_nice_yaml(indent=2) | indent(width=2) | trim }}
   {% endif %}
-  {% if loki_ruler_storage_config | length > 0 %}
+  {% if loki_ruler_storage_config is not none and loki_ruler_storage_config | length > 0 %}
 
   ruler_storage:
     {{ loki_ruler_storage_config | from_yaml | to_nice_yaml(indent=2) | indent(width=2) | trim }}
   {% endif %}
-  {% if loki_ingester_client_config | length > 0 %}
+  {% if loki_ingester_client_config is not none and loki_ingester_client_config | length > 0 %}
 
   ingester_client:
     {{ loki_ingester_client_config | from_yaml | to_nice_yaml(indent=2) | indent(width=2) | trim }}
   {% endif %}
-  {% if loki_ingester_config | length > 0 %}
+  {% if loki_ingester_config is not none and loki_ingester_config | length > 0 %}
 
   ingester:
     {{ loki_ingester_config | from_yaml | to_nice_yaml(indent=2) | indent(width=2) | trim }}
   {% endif %}
-  {% if loki_pattern_ingester_config | length > 0 %}
+  {% if loki_pattern_ingester_config is not none and loki_pattern_ingester_config | length > 0 %}
 
   pattern_ingester:
     {{ loki_pattern_ingester_config | from_yaml | to_nice_yaml(indent=2) | indent(width=2) | trim }}
   {% endif %}
-  {% if loki_index_gateway_config | length > 0 %}
+  {% if loki_index_gateway_config is not none and loki_index_gateway_config | length > 0 %}
 
   index_gateway:
     {{ loki_index_gateway_config | from_yaml | to_nice_yaml(indent=2) | indent(width=2) | trim }}
   {% endif %}
-  {% if loki_storage_config | length > 0 %}
+  {% if loki_storage_config is not none and loki_storage_config | length > 0 %}
 
   storage_config:
     {{ loki_storage_config | from_yaml | to_nice_yaml(indent=2) | indent(width=2) | trim }}
   {% endif %}
-  {% if loki_chunk_store_config | length > 0 %}
+  {% if loki_chunk_store_config is not none and loki_chunk_store_config | length > 0 %}
 
   chunk_store_config:
     {{ loki_chunk_store_config | from_yaml | to_nice_yaml(indent=2) | indent(width=2) | trim }}
   {% endif %}
-  {% if loki_schema_config | length > 0 %}
+  {% if loki_schema_config is not none and loki_schema_config | length > 0 %}
 
   schema_config:
     {{ loki_schema_config | from_yaml | to_nice_yaml(indent=2) | indent(width=2) | trim }}
   {% endif %}
-  {% if loki_compactor_config | length > 0 %}
+  {% if loki_compactor_config is not none and loki_compactor_config | length > 0 %}
 
   compactor_config:
     {{ loki_compactor_config | from_yaml | to_nice_yaml(indent=2) | indent(width=2) | trim }}
   {% endif %}
-  {% if loki_limits_config | length > 0 %}
+  {% if loki_limits_config is not none and loki_limits_config | length > 0 %}
 
   limits_config:
     {{ loki_limits_config | from_yaml | to_nice_yaml(indent=2) | indent(width=2) | trim }}
   {% endif %}
-  {% if loki_frontend_worker_config | length > 0 %}
+  {% if loki_frontend_worker_config is not none and loki_frontend_worker_config | length > 0 %}
 
   frontend_worker_config:
     {{ loki_frontend_worker_config | from_yaml | to_nice_yaml(indent=2) | indent(width=2) | trim }}
   {% endif %}
-  {% if loki_table_manager_config | length > 0 %}
+  {% if loki_table_manager_config is not none and loki_table_manager_config | length > 0 %}
 
   table_manager:
     {{ loki_table_manager_config | from_yaml | to_nice_yaml(indent=2) | indent(width=2) | trim }}
   {% endif %}
-  {% if loki_memberlist_config | length > 0 %}
+  {% if loki_memberlist_config is not none and loki_memberlist_config | length > 0 %}
 
   memberlist:
     {{ loki_memberlist_config | from_yaml | to_nice_yaml(indent=2) | indent(width=2) | trim }}
   {% endif %}
-  {% if loki_common_config | length > 0 %}
+  {% if loki_common_config is not none and loki_common_config | length > 0 %}
 
   common:
     {{ loki_common_config | from_yaml | to_nice_yaml(indent=2) | indent(width=2) | trim }}
   {% endif %}
-  {% if loki_additional_config | length > 0 %}
+  {% if loki_additional_config is not none and loki_additional_config | length > 0 %}
 
   {{ loki_additional_config | from_yaml | to_nice_yaml(indent=2) | trim }}
   {% endif %}
@@ -1019,11 +1019,14 @@ Configuration block for schema_config
 loki_schema_config: |
   configs:
     - from: 2020-10-24
-      store: boltdb-shipper
+      store: tsdb
       object_store: filesystem
       schema: v13
       index:
         prefix: index_
+        period: 24h
+      chunks:
+        prefix: chunks_
         period: 24h
 ```
 
@@ -1060,7 +1063,7 @@ Configuration block for table_manager
 
 ```YAML
 loki_table_manager_config: |
-  retention_deletes_enabled: {{ "true" if loki_retention_time | length > 0 else "false" }}
+  retention_deletes_enabled: {{ "true" if loki_retention_time is not none and loki_retention_time | length > 0 else "false" }}
   retention_period: {{ loki_retention_time }}
 ```
 
