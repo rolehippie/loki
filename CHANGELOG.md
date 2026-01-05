@@ -1,5 +1,12 @@
 # Changelog
 
+## [5.1.0](https://github.com/rolehippie/loki/compare/v5.0.0...v5.1.0) (2026-01-05)
+
+
+### Features
+
+* **minor:** update dependency community.general to >=12.2.0,<12.3.0 ([#90](https://github.com/rolehippie/loki/issues/90)) ([a1e989c](https://github.com/rolehippie/loki/commit/a1e989cd455afb340757f85e4b0c740487f7192d))
+
 ## [5.0.0](https://github.com/rolehippie/loki/compare/v4.2.1...v5.0.0) (2025-12-17)
 
 
