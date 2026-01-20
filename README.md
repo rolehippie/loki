@@ -213,7 +213,7 @@ loki_combined_config: |
   {% endif %}
   {% if loki_compactor_config is not none and loki_compactor_config | length > 0 %}
 
-  compactor_config:
+  compactor:
     {{ loki_compactor_config | from_yaml | to_nice_yaml(indent=2) | indent(width=2) | trim }}
   {% endif %}
   {% if loki_limits_config is not none and loki_limits_config | length > 0 %}
@@ -933,7 +933,7 @@ Version of the OAuth2 Proxy to download
 #### Default value
 
 ```YAML
-loki_oauth2_version: 7.13.0
+loki_oauth2_version: 7.14.2
 ```
 
 ### loki_pattern_ingester_config
