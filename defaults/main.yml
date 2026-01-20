@@ -269,7 +269,7 @@ loki_combined_config: |
   {% endif %}
   {% if loki_compactor_config is not none and loki_compactor_config | length > 0 %}
 
-  compactor_config:
+  compactor:
     {{ loki_compactor_config | from_yaml | to_nice_yaml(indent=2) | indent(width=2) | trim }}
   {% endif %}
   {% if loki_limits_config is not none and loki_limits_config | length > 0 %}
