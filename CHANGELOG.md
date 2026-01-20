@@ -1,5 +1,15 @@
 # Changelog
 
+## [5.2.1](https://github.com/rolehippie/loki/compare/v5.2.0...v5.2.1) (2026-01-20)
+
+### Bugfixes
+
+* key name for compactor in the template ([9cda97f](https://github.com/rolehippie/loki/commit/9cda97f5bd128d5642197b63873e2a99c18a99d7))
+
+### Miscellaneous
+
+* **flake:** updated lockfile [skip ci] ([cb201c3](https://github.com/rolehippie/loki/commit/cb201c36cc80bb47a52ba70eae491251e5db907f))
+
 ## [5.2.0](https://github.com/rolehippie/loki/compare/v5.1.0...v5.2.0) (2026-01-19)
 
 ### Dependencies
