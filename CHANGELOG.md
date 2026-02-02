@@ -1,5 +1,15 @@
 # Changelog
 
+## [5.3.0](https://github.com/rolehippie/loki/compare/v5.2.2...v5.3.0) (2026-02-02)
+
+### Dependencies
+
+* **minor:** update dependency community.general to >=12.3.0,<12.4.0 ([#100](https://github.com/rolehippie/loki/issues/100)) ([ebadcca](https://github.com/rolehippie/loki/commit/ebadccab4c056d4b85c655c5b23d149ae9c91f26))
+
+### Miscellaneous
+
+* **flake:** updated lockfile [skip ci] ([5de8e4f](https://github.com/rolehippie/loki/commit/5de8e4f6208a8c6b1365605c404fb8f2d20bdf00))
+
 ## [5.2.2](https://github.com/rolehippie/loki/compare/v5.2.1...v5.2.2) (2026-01-26)
 
 ### Dependencies
