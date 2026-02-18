@@ -1,7 +1,7 @@
 ---
 # @var loki_version:description: Version of the release to install
 # renovate: datasource=github-releases depName=grafana/loki
-loki_version: 3.6.5
+loki_version: 3.6.6
 
 # @var loki_image:description: Docker image to use for deployment
 loki_image: "grafana/loki:{{ loki_version }}"
