@@ -1,5 +1,16 @@
 # Changelog
 
+## [5.3.2](https://github.com/rolehippie/loki/compare/v5.3.1...v5.3.2) (2026-02-23)
+
+### Dependencies
+
+* **patch:** update dependency grafana/loki to v3.6.6 ([#102](https://github.com/rolehippie/loki/issues/102)) ([eec4119](https://github.com/rolehippie/loki/commit/eec4119b04b6f47f3c08354e6bdef0fdf1ed2843))
+
+### Miscellaneous
+
+* **flake:** updated lockfile [skip ci] ([61b8b60](https://github.com/rolehippie/loki/commit/61b8b6092f6c7a1ddd5dce5812b14453a0b06987))
+* **flake:** updated lockfile [skip ci] ([c8c83be](https://github.com/rolehippie/loki/commit/c8c83be9c1acc89f2b7930d2b93f0d0861585ee0))
+
 ## [5.3.1](https://github.com/rolehippie/loki/compare/v5.3.0...v5.3.1) (2026-02-09)
 
 ### Dependencies
