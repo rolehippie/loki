@@ -1,5 +1,17 @@
 # Changelog
 
+## [5.5.0](https://github.com/rolehippie/loki/compare/v5.4.0...v5.5.0) (2026-03-23)
+
+### Dependencies
+
+* **minor:** update dependency oauth2-proxy/oauth2-proxy to v7.15.0 ([#107](https://github.com/rolehippie/loki/issues/107)) ([5acb383](https://github.com/rolehippie/loki/commit/5acb38340331b19c4a14f8d979ed6639c93a53c8))
+
+### Miscellaneous
+
+* **flake:** updated lockfile [skip ci] ([adcb949](https://github.com/rolehippie/loki/commit/adcb9495858179c0d26cf5204a098d121e0c7d0d))
+* **flake:** updated lockfile [skip ci] ([73fd979](https://github.com/rolehippie/loki/commit/73fd979bab7545089d4f49c5ff8cf8740d95bea4))
+* **flake:** updated lockfile [skip ci] ([1e04948](https://github.com/rolehippie/loki/commit/1e04948654461f384dc567d9e057e5a78b011510))
+
 ## [5.4.0](https://github.com/rolehippie/loki/compare/v5.3.2...v5.4.0) (2026-03-02)
 
 ### Dependencies
