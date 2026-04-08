@@ -837,7 +837,7 @@ loki_oauth2_memory_swap: 2048m
 #### Default value
 
 ```YAML
-loki_oauth2_network: '{{ loki_network }}'
+loki_oauth2_network:
 ```
 
 ### loki_oauth2_number_of_cpus
