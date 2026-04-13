@@ -1,5 +1,16 @@
 # Changelog
 
+## [5.7.0](https://github.com/rolehippie/loki/compare/v5.6.0...v5.7.0) (2026-04-13)
+
+### Dependencies
+
+* **minor:** update dependency community.docker to >=5.2.0,<5.3.0 ([#115](https://github.com/rolehippie/loki/issues/115)) ([ff15581](https://github.com/rolehippie/loki/commit/ff1558186c2726447632339a76a724d82942d242))
+
+### Miscellaneous
+
+* **flake:** updated lockfile [skip ci] ([25d2141](https://github.com/rolehippie/loki/commit/25d214147f302997488546987988874a23cace93))
+* **flake:** updated lockfile [skip ci] ([2b71c9c](https://github.com/rolehippie/loki/commit/2b71c9c7fea1218762977aa392a0500590e1595c))
+
 ## [5.6.0](https://github.com/rolehippie/loki/compare/v5.5.0...v5.6.0) (2026-03-30)
 
 ### Dependencies
