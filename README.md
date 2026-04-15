@@ -933,7 +933,7 @@ Version of the OAuth2 Proxy to download
 #### Default value
 
 ```YAML
-loki_oauth2_version: 7.15.1
+loki_oauth2_version: 7.15.2
 ```
 
 ### loki_pattern_ingester_config
