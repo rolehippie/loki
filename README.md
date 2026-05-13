@@ -1084,7 +1084,7 @@ Version of the release to install
 #### Default value
 
 ```YAML
-loki_version: 3.7.1
+loki_version: 3.7.2
 ```
 
 ## Discovered Tags
