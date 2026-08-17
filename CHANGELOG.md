@@ -1,5 +1,15 @@
 # Changelog
 
+## [6.4.0](https://github.com/rolehippie/loki/compare/v6.3.0...v6.4.0) (2026-08-17)
+
+### Dependencies
+
+* **minor:** update dependency community.general to >=13.3.0,<13.4.0 ([#136](https://github.com/rolehippie/loki/issues/136)) ([dd385f4](https://github.com/rolehippie/loki/commit/dd385f42cbdbc6a792829486a4c5fca9342eaf3d))
+* **minor:** update dependency pipx:ansible-lint to v26.8.0 ([#137](https://github.com/rolehippie/loki/issues/137)) ([c6a6bdc](https://github.com/rolehippie/loki/commit/c6a6bdc46b423acf10018d4e16b39def2b87508d))
+* **minor:** update dependency pipx:molecule to v26.8.0 ([#138](https://github.com/rolehippie/loki/issues/138)) ([f84dc34](https://github.com/rolehippie/loki/commit/f84dc34180039cfeef9b4c957168f968c7fcf949))
+* **patch:** update dependency pipx:ansible-core to v2.21.3 ([#134](https://github.com/rolehippie/loki/issues/134)) ([031d31f](https://github.com/rolehippie/loki/commit/031d31fc07fb8cc4cc3ca15162488c104659453b))
+* **patch:** update dependency pre-commit to v4.6.2 ([#135](https://github.com/rolehippie/loki/issues/135)) ([741f6f1](https://github.com/rolehippie/loki/commit/741f6f1e2a8309912ca4fe2f2de62492a0dc249b))
+
 ## [6.3.0](https://github.com/rolehippie/loki/compare/v6.2.0...v6.3.0) (2026-08-10)
 
 ### Dependencies
