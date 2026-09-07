@@ -1,5 +1,15 @@
 # Changelog
 
+## [6.5.0](https://github.com/rolehippie/loki/compare/v6.4.2...v6.5.0) (2026-09-07)
+
+### Features
+
+* add separate requirements for molecule run ([5046fa1](https://github.com/rolehippie/loki/commit/5046fa13082deef449b86eb62d5182cf5e9b4cb2))
+
+### Dependencies
+
+* **minor:** update dependency community.docker to >=5.3.0,<5.4.0 ([#142](https://github.com/rolehippie/loki/issues/142)) ([564d590](https://github.com/rolehippie/loki/commit/564d5907aa18c4281dbab1e78fa6fd5e661e22a5))
+
 ## [6.4.2](https://github.com/rolehippie/loki/compare/v6.4.1...v6.4.2) (2026-08-31)
 
 ### Dependencies
