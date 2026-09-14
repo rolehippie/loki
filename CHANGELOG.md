@@ -1,5 +1,13 @@
 # Changelog
 
+## [6.6.0](https://github.com/rolehippie/loki/compare/v6.5.0...v6.6.0) (2026-09-14)
+
+### Dependencies
+
+* **minor:** update dependency community.general to >=13.4.0,<13.5.0 ([#143](https://github.com/rolehippie/loki/issues/143)) ([d19817d](https://github.com/rolehippie/loki/commit/d19817d335010f68795a1a31cbd751f94e1c3b93))
+* **mise:** update dependency pipx:ansible-core to v2.21.4 ([#144](https://github.com/rolehippie/loki/issues/144)) ([376214a](https://github.com/rolehippie/loki/commit/376214a55a6cb99f5dba4a85cd3a2fc534234835))
+* **mise:** update dependency prek to v0.5.3 ([#145](https://github.com/rolehippie/loki/issues/145)) ([72c16d2](https://github.com/rolehippie/loki/commit/72c16d2131e9f636c6c419d345c2a069211c2e92))
+
 ## [6.5.0](https://github.com/rolehippie/loki/compare/v6.4.2...v6.5.0) (2026-09-07)
 
 ### Features
