@@ -1,5 +1,16 @@
 # Changelog
 
+## [6.7.0](https://github.com/rolehippie/loki/compare/v6.6.1...v6.7.0) (2026-10-05)
+
+### Dependencies
+
+* **minor:** update dependency community.docker to >=5.4.0,<5.5.0 ([#153](https://github.com/rolehippie/loki/issues/153)) ([edfd528](https://github.com/rolehippie/loki/commit/edfd52831e1505ea15ce71334173b1f7666a6dc3))
+* **mise:** update dependency pipx:ansible-lint to v26.9.0 ([#148](https://github.com/rolehippie/loki/issues/148)) ([35a0d2c](https://github.com/rolehippie/loki/commit/35a0d2c36a011cf9a0160b95d6ea616bb7b1b17a))
+* **mise:** update dependency pipx:molecule to v26.9.0 ([#149](https://github.com/rolehippie/loki/issues/149)) ([653feb4](https://github.com/rolehippie/loki/commit/653feb4f5f2c3c183cf43f0b9b4c7378b03761e9))
+* **mise:** update dependency prek to v0.5.4 ([#150](https://github.com/rolehippie/loki/issues/150)) ([6f614de](https://github.com/rolehippie/loki/commit/6f614deb5ecccb54818829459a4eb173124aaee6))
+* **mise:** update dependency prek to v0.5.5 ([#154](https://github.com/rolehippie/loki/issues/154)) ([cb02566](https://github.com/rolehippie/loki/commit/cb025663d8b0670878087f359dd39c8cdc29a568))
+* **patch:** update dependency oauth2-proxy/oauth2-proxy to v7.15.5 ([#152](https://github.com/rolehippie/loki/issues/152)) ([7a1d8dd](https://github.com/rolehippie/loki/commit/7a1d8dd395079279ca11981634ddb101683300d4))
+
 ## [6.6.1](https://github.com/rolehippie/loki/compare/v6.6.0...v6.6.1) (2026-09-21)
 
 ### Dependencies
