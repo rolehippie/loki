@@ -1,5 +1,15 @@
 # Changelog
 
+## [6.8.1](https://github.com/rolehippie/loki/compare/v6.8.0...v6.8.1) (2026-10-26)
+
+### Dependencies
+
+* **mise:** update dependency pipx:ansible-lint to v26.10.1 ([#160](https://github.com/rolehippie/loki/issues/160)) ([0cd5a6f](https://github.com/rolehippie/loki/commit/0cd5a6f004d3e6bb61634ebd42a1a0755fc3214c))
+* **mise:** update dependency pipx:molecule to v26.10.0 ([#159](https://github.com/rolehippie/loki/issues/159)) ([b5385e5](https://github.com/rolehippie/loki/commit/b5385e5ac16bf81e116fff2b7a7d94db8c672227))
+* **mise:** update dependency prek to v0.5.6 ([#161](https://github.com/rolehippie/loki/issues/161)) ([43bf206](https://github.com/rolehippie/loki/commit/43bf206a306dda30a57c395522dcbcaeec262c38))
+* **mise:** update dependency prek to v0.5.7 ([#162](https://github.com/rolehippie/loki/issues/162)) ([ddc8a66](https://github.com/rolehippie/loki/commit/ddc8a6636f55bdaf35eb59c6a85b0962dc064393))
+* **patch:** update dependency grafana/loki to v3.7.9 ([#163](https://github.com/rolehippie/loki/issues/163)) ([2dad001](https://github.com/rolehippie/loki/commit/2dad0019ca05fcf8d738b39d8f3f92385834c212))
+
 ## [6.8.0](https://github.com/rolehippie/loki/compare/v6.7.0...v6.8.0) (2026-10-12)
 
 ### Dependencies
